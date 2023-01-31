@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default function Header() {
     return (
@@ -9,5 +9,5 @@ export default function Header() {
                 <button>회원가입</button>
             </nav>
         </header>
-    )
+    );
 }

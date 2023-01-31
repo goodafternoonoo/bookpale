@@ -1,7 +1,8 @@
 import '../css/Detail.css';
 import png from '../js.png';
+import { Button } from 'react-bootstrap';
 
-export default function Order() {
+export default function Detail() {
     return (
         <section className='section'>
             <div className='container'>
@@ -15,8 +16,8 @@ export default function Order() {
                         <p>재밌습니다 읽어보세요~</p>
                     </div>
                     <div className='buttons'>
-                        <button>장바구니</button>
-                        <button>구매하기</button>
+                        <Button>장바구니</Button>
+                        <Button>구매하기</Button>
                     </div>
                 </div>
             </div>
