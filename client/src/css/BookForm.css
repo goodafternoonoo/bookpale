@@ -1,0 +1,14 @@
+.content{
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.content li {
+  display: flex;
+  flex-direction: column;
+}
+
+.content li span {
+  text-align: center;
+}
