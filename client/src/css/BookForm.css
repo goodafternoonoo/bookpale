@@ -1,14 +1,16 @@
-.content{
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
+.content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    height: 80vh;
 }
 
 .content li {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .content li span {
-  text-align: center;
+    text-align: center;
 }
