@@ -18,6 +18,9 @@ export default function Header() {
                         <Nav.Link href='#'>비문학</Nav.Link>
                     </Nav>
                     <Nav className='justify-content-end'>
+                        <Link to='/menu'>
+                            <Nav.Link href='/menu'>메뉴</Nav.Link>
+                        </Link>
                         <Nav.Link href='#shoppingcart'>장바구니</Nav.Link>
                         <Nav.Link href='#signin'>로그인</Nav.Link>
                         <Nav.Link href='#signup'>회원가입</Nav.Link>

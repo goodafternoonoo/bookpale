@@ -1,5 +1,3 @@
-import styles from '../css/Order.module.css';
-import png from '../js.png';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
