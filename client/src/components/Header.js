@@ -10,6 +10,11 @@ export default function Header() {
                 {' '}
                 <Container>
                     <Navbar.Brand href='#home'>로고입니다</Navbar.Brand>
+                    <Nav className='me-auto'>
+                        <Nav.Link href='/detail'>디테일</Nav.Link>
+                        <Nav.Link href='#signin'>로그인</Nav.Link>
+                        <Nav.Link href='#signup'>회원가입</Nav.Link>
+                    </Nav>
                     <Nav className='me-auto' style={{justifyContent:'flex-end'}}>
                         <Nav.Link href='#shoppingcart'>장바구니</Nav.Link>
                         <Nav.Link href='#signin'>로그인</Nav.Link>

@@ -1,34 +1,35 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
+//
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Header from './components/Header.js';
-import Footer from './components/Footer.js';
-import BookForm from './components/BookForm.js';
+import Main from './pages/Main.js';
 import Detail from './pages/Detail.js';
 import Order from './pages/Order.js';
 import Complete from './pages/Complete.js';
+import BookForm from './components/BookForm.js';
 
-function App() {
+export default function App() {
     return (
         <>
-            <Header />
-            <Link to='/'>메인</Link>
-            <Link to='/detail'>디테일</Link>
-            <Link to='/order'>주문</Link>
-            <Link to='/complete'>주문완료</Link>
-            <Routes>
-                <Route path='/' element={<BookForm />} />
-                <Route path='/detail' element={<Detail />} />
-                <Route path='/order' element={<Order />} />
-                <Route path='/complete' element={<Complete />} />
-            </Routes>
-            {/* <BookForm /> */}
-            {/* <Detail /> */}
-            <Footer />
+            <Main>
+                <Routes>
+                    <Route exact path='/' element={<BookForm />}>
+                        메인
+                    </Route>
+                    <Route path='/detail' element={<Detail />}>
+                        디테일
+                    </Route>
+                    <Route path='/order' element={<Order />}>
+                        주문
+                    </Route>
+                    <Route path='/complete' element={<Complete />}>
+                        주문완료
+                    </Route>
+                </Routes>
+            </Main>
         </>
     );
 }
-
-export default App;
