@@ -2,6 +2,7 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
     return (
@@ -9,13 +10,14 @@ export default function Header() {
             <Navbar bg='dark' variant='dark'>
                 {' '}
                 <Container>
-                    <Navbar.Brand href='#home'>로고입니다</Navbar.Brand>
+                    <Link to='/'>
+                        <Navbar.Brand>로고입니다</Navbar.Brand>
+                    </Link>
                     <Nav className='me-auto'>
-                        <Nav.Link href='/detail'>디테일</Nav.Link>
-                        <Nav.Link href='#signin'>로그인</Nav.Link>
-                        <Nav.Link href='#signup'>회원가입</Nav.Link>
+                        <Nav.Link href='#'>문학</Nav.Link>
+                        <Nav.Link href='#'>비문학</Nav.Link>
                     </Nav>
-                    <Nav className='me-auto' style={{justifyContent:'flex-end'}}>
+                    <Nav className='justify-content-end'>
                         <Nav.Link href='#shoppingcart'>장바구니</Nav.Link>
                         <Nav.Link href='#signin'>로그인</Nav.Link>
                         <Nav.Link href='#signup'>회원가입</Nav.Link>

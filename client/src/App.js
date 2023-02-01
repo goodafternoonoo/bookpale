@@ -13,7 +13,7 @@ import BookForm from './components/BookForm.js';
 
 export default function App() {
     return (
-        <>
+        <div className='vh-100'>
             <Main>
                 <Routes>
                     <Route exact path='/' element={<BookForm />}>
@@ -30,6 +30,6 @@ export default function App() {
                     </Route>
                 </Routes>
             </Main>
-        </>
+        </div>
     );
 }
