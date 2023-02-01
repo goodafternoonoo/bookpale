@@ -1,0 +1,159 @@
+.cart-section {
+    height: 80vh;
+    border: solid 1px;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.cart-container {
+    display: flex;
+    height: 100%;
+}
+
+.cart-container h1,
+.cart-container h6 {
+    display: inline;
+}
+
+.cart-main {
+    border: solid 1px;
+}
+/*
+.cart-list {
+
+}
+
+.cart-product-container {
+
+}
+
+.cart-product-header {
+
+}
+
+.checkbox {
+
+}
+
+#SelectCheckbox {
+
+}
+
+.help {
+
+}
+
+.seperator {
+
+}
+
+.help-separator {
+
+}
+
+.delete-part {
+
+}
+
+.cart-product-item {
+
+}
+
+.product-image {
+
+}
+
+.product-content {
+
+}
+
+#productName {
+
+}
+
+
+.quantity {
+
+}
+
+.minus {
+
+}
+
+.input-quentity {
+
+}
+
+.plus {
+
+}
+
+.calculation {
+
+}
+
+#productPrice {
+
+}
+
+#multifly {
+
+}
+
+#updatedQuantity {
+
+}
+
+#equal {
+
+}
+
+#totalPrice {
+
+}
+
+.delete-button {
+
+}
+
+.cart-summary {
+
+}
+
+.cart-order-summary {
+
+}
+
+.cart-order-header {
+
+}
+
+.cart-order-info {
+
+}
+
+.info {
+
+}
+
+#productsCount {
+
+}
+
+#deliveryFee {
+
+}
+
+#totalPrice {
+
+}
+
+.purchase {
+
+}
+
+.purchaseButton {
+
+}
+*/

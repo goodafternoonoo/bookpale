@@ -21,7 +21,7 @@ export default function Header() {
                         <Link to='/menu'>
                             <Nav.Link href='/menu'>메뉴</Nav.Link>
                         </Link>
-                        <Nav.Link href='#shoppingcart'>장바구니</Nav.Link>
+                        <Nav.Link href='/cart'>장바구니</Nav.Link>
                         <Nav.Link href='#signin'>로그인</Nav.Link>
                         <Nav.Link href='#signup'>회원가입</Nav.Link>
                     </Nav>
