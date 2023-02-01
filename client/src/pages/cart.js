@@ -16,14 +16,9 @@ export default function Cart() {
                             <div className='cart-product-header'>
                                 <label className='checkbox'>
                                     <input type='checkbox' id='allSelectCheckbox' />
-                                    <p className='help'>전체선택</p>
+                                    <h6 className='help'>&nbsp; 전체선택 &nbsp; | &nbsp; 선택삭제</h6>
                                 </label>
-                                <label className='seperator'>
-                                    <p className='help-seperator'> &nbsp;&nbsp; | &nbsp;&nbsp;</p>
-                                </label>
-                                <label className='delete-part'>
-                                    <p className='help'>선택삭제</p>
-                                </label>
+                                <hr />
                             </div>
                             <div className='cart-product-item'>
                                 <label className='checkbox'>
@@ -33,7 +28,7 @@ export default function Cart() {
                                     <img id='' src={png} alt=''></img>
                                 </figure>
                                 <div className='product-content'>
-                                    <p className='productName'>책 제목</p>
+                                    <h3 className='productName'>책 제목</h3>
                                     <div className='quantity'>
                                         <button className='minus'>-</button>
                                         <input className='input-quentity' type='number' min='1' max='99' value='1'></input>

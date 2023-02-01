@@ -1,30 +1,35 @@
 .cart-section {
     height: 80vh;
     border: solid 1px;
-    border-radius: 10px;
     margin: 10px;
     padding: 10px;
 }
 
 .cart-container {
-    display: flex;
+    display: block;
     height: 100%;
 }
 
 .cart-container h1,
 .cart-container h6 {
     display: inline;
+    vertical-align: bottom;
+}
+
+.cart-container h1 {
+    font-weight: bold;
 }
 
 .cart-main {
     border: solid 1px;
 }
-/*
-.cart-list {
-
-}
 
 .cart-product-container {
+    display: inline;
+    vertical-align: bottom;
+}
+/*
+.cart-list {
 
 }
 
