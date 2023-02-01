@@ -5,12 +5,14 @@ import { Button } from 'react-bootstrap';
 
 export default function Detail() {
     return (
-        <section className={styles.section}>
-            <div className={styles.container}>
-                <div>
+        <div className='container '>
+            <h1 className='mt-3'>주문완료</h1>
+            <hr />
+            <div className='d-flex justify-content-between'>
+                <div className='input-form row mb-5 w-50'>
                     <img src={png} alt='' />
                 </div>
-                <div className={styles.bookContent}>
+                <div className={(styles.bookContent, 'input-form row mb-5 w-50')}>
                     <div className={styles.desc}>
                         <p className={styles.title}>책 제목</p>
                         <h1>30,000원</h1>
@@ -24,6 +26,6 @@ export default function Detail() {
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     );
 }
