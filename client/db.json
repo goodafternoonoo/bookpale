@@ -1,7 +1,7 @@
 {
     "books": [
         {
-            "_id": "1",
+            "id": "1",
             "title": "리액트 실전",
             "categoryId": "IT",
             "shortDescription": "짧은 설명",
@@ -11,7 +11,7 @@
             "price": "10000"
         },
         {
-            "_id": "2",
+            "id": "2",
             "title": "리액트 기초",
             "categoryId": "IT",
             "shortDescription": "짧은 설명",
@@ -21,7 +21,7 @@
             "price": "10000"
         },
         {
-            "_id": "3",
+            "id": "3",
             "title": "Node.js 기초",
             "categoryId": "IT",
             "shortDescription": "짧은 설명",
@@ -31,7 +31,7 @@
             "price": "10000"
         },
         {
-            "_id": "4",
+            "id": "4",
             "title": "Node.js 실전",
             "categoryId": "IT",
             "shortDescription": "짧은 설명",
@@ -41,7 +41,7 @@
             "price": "10000"
         },
         {
-            "_id": "5",
+            "id": "5",
             "title": "Mongoose 도전하기",
             "categoryId": "IT",
             "shortDescription": "짧은 설명",

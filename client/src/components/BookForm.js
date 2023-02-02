@@ -20,9 +20,9 @@ export default function BookForm() {
             <Container className='d-flex my-5 py-5'>
                 {books.map((book) => {
                     return (
-                        <Card style={{ width: '20%', margin: '0 10px' }}>
-                            <Link to='/detail'>
-                                <Card.Img variant='top' src={png} style={{}} />
+                        <Card key={book.id} style={{ width: '20%', margin: '0 10px' }}>
+                            <Link to={`/detail/${book.id}`}>
+                                <Card.Img variant='top' src={png} />
                             </Link>
                             <Card.Body>
                                 <Card.Title>{book.title}</Card.Title>

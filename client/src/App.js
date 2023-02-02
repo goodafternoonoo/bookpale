@@ -23,14 +23,13 @@ export default function App() {
                 <Routes>
                     <Route exact path='/' element={<BookForm />}></Route>
                     <Route path='/menu' element={<Menu />}></Route>
-                    <Route path='/detail' element={<Detail />}></Route>
+                    <Route path='/detail/:id' element={<Detail />}></Route>
                     <Route path='/order' element={<Order />}></Route>
                     <Route path='/complete' element={<Complete />}></Route>
                     <Route path='/cart' element={<Cart />}></Route>
                     <Route path='/history' element={<History />}></Route>
                     <Route path='/signin' element={<SignIn />}></Route>
                     <Route path='/signup' element={<SignUp />}></Route>
-                    
                 </Routes>
             </Main>
         </div>
