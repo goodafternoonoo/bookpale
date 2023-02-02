@@ -11,10 +11,6 @@ export default function Main({ children }) {
     return (
         <>
             <Header />
-            {/* <Link to='/'>메인</Link>
-            <Link to='/detail'>디테일</Link>
-            <Link to='/order'>주문</Link>
-            <Link to='/complete'>주문완료</Link> */}
             <div>{children}</div>
             <Footer />
         </>
