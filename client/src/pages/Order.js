@@ -1,5 +1,5 @@
-import styles from '../css/Order.module.css';
-import png from '../js.png';
+// import styles from '../css/Order.module.css';
+// import png from '../js.png';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
@@ -17,7 +17,7 @@ export default function Order() {
                                 <div className='row'>
                                     <div className='mb-3'>
                                         <label for='name'>이름</label>
-                                        <input type='text' className='form-control' id='name' placeholder='홍길동' required />
+                                        <input type='text' className='form-control w-50' id='name' placeholder='홍길동' required />
                                         <div className='invalid-feedback'>이름을 입력해주세요.</div>
                                     </div>
                                 </div>

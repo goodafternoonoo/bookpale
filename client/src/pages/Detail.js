@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap';
 export default function Detail() {
     return (
         <div className='container '>
-            <h1 className='mt-3'>주문완료</h1>
+            <h1 className='mt-3'>상품상세</h1>
             <hr />
             <div className='d-flex justify-content-between'>
                 <div className='input-form row mb-5 w-50'>

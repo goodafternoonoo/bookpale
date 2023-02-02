@@ -1,7 +1,7 @@
 import styles from '../css/Menu.module.css';
 import png from '../js.png';
 import { Link } from 'react-router-dom';
-// import { Button, Card } from 'react-bootstrap';
+
 
 export default function Menu() {
     return (
@@ -10,7 +10,7 @@ export default function Menu() {
                 <h1 className='mt-3'>메뉴</h1>
                 <hr />
                 <div className={styles['menu-container']}>
-                    <Link to='/' className={styles['menu-card']}>
+                    <Link to='/history' className={styles['menu-card']}>
                         <div className={styles['menu-icon']}>
                             <span className='icon has-text-info'>
                                 {/* <i className='fa-solid fa-credit-card'></i> */}

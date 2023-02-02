@@ -22,10 +22,10 @@ export default function SignIn() {
                 </FloatingLabel>
                 {/* 로그인 회원가입 버튼 묶음 */}
                 <div className='d-grid gap-2'>
-                    <Button variant='primary' size='lg'>
+                    <Button variant='primary' size='lg' onClick={() => navigate('/')}>
                         로그인
                     </Button>
-                    <Button variant='secondary' size='lg'>
+                    <Button variant='secondary' size='lg' onClick={() => navigate('/signup')}>
                         회원가입
                     </Button>
                 </div>

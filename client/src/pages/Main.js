@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 // 부트스트랩 모듈 불러오기
 import 'bootstrap/dist/css/bootstrap.min.css';

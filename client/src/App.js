@@ -11,7 +11,10 @@ import Order from './pages/Order.js';
 import Complete from './pages/Complete.js';
 import Menu from './pages/Menu.js';
 import Cart from './pages/Cart.js';
+import History from './pages/History.js';
 import BookForm from './components/BookForm.js';
+import SignIn from './pages/SignIn.js';
+import SignUp from './pages/SignUp.js';
 
 export default function App() {
     return (
@@ -24,6 +27,10 @@ export default function App() {
                     <Route path='/order' element={<Order />}></Route>
                     <Route path='/complete' element={<Complete />}></Route>
                     <Route path='/cart' element={<Cart />}></Route>
+                    <Route path='/history' element={<History />}></Route>
+                    <Route path='/signin' element={<SignIn />}></Route>
+                    <Route path='/signup' element={<SignUp />}></Route>
+                    
                 </Routes>
             </Main>
         </div>

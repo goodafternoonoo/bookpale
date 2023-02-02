@@ -4,7 +4,7 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 
 
 export default function Header() {
-  const navagite = useNavigate();
+  const navigate = useNavigate();
     return (
         <>
             <Navbar bg='dark' variant='dark'>
@@ -20,10 +20,10 @@ export default function Header() {
                     </Nav>
                     <Nav className='justify-content-end'>
                       {/* 링크 태그를 감싸는  */}
-                        <Nav.Link onClick={() => navagite('/menu')}>메뉴</Nav.Link>
-                        <Nav.Link onClick={() => navagite('/cart')}>장바구니</Nav.Link>
-                        <Nav.Link onClick={() => navagite('/signin')}>로그인</Nav.Link>
-                        <Nav.Link onClick={() => navagite('/signup')}>회원가입</Nav.Link>
+                        <Nav.Link onClick={() => navigate('/menu')}>메뉴</Nav.Link>
+                        <Nav.Link onClick={() => navigate('/cart')}>장바구니</Nav.Link>
+                        <Nav.Link onClick={() => navigate('/signin')}>로그인</Nav.Link>
+                        <Nav.Link onClick={() => navigate('/signup')}>회원가입</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
