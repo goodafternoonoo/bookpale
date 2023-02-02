@@ -16,7 +16,7 @@ export default function Main({ children }) {
             <Link to='/detail'>디테일</Link>
             <Link to='/order'>주문</Link>
             <Link to='/complete'>주문완료</Link> */}
-            <div className='h-100'>{children}</div>
+            <div>{children}</div>
             <Footer />
         </>
     );

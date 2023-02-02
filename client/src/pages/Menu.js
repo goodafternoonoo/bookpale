@@ -1,7 +1,7 @@
 import styles from '../css/Menu.module.css';
 import png from '../js.png';
 import { Link } from 'react-router-dom';
-import { Button, Card } from 'react-bootstrap';
+// import { Button, Card } from 'react-bootstrap';
 
 export default function Menu() {
     return (
@@ -14,7 +14,7 @@ export default function Menu() {
                         <div className={styles['menu-icon']}>
                             <span className='icon has-text-info'>
                                 {/* <i className='fa-solid fa-credit-card'></i> */}
-                                <img src={png} width='70' />
+                                <img src={png} width='70' alt='메뉴 아이콘'/>
                             </span>
                         </div>
                         <div className={styles['menu-body']}>
@@ -26,7 +26,7 @@ export default function Menu() {
                         <div className={styles['menu-icon']}>
                             <span className='icon has-text-info'>
                                 {/* <i className='fa-solid fa-credit-card'></i> */}
-                                <img src={png} width='70' />
+                                <img src={png} width='70' alt='메뉴 아이콘'/>
                             </span>
                         </div>
                         <div className={styles['menu-body']}>
@@ -38,7 +38,7 @@ export default function Menu() {
                         <div className={styles['menu-icon']}>
                             <span className='icon has-text-info'>
                                 {/* <i className='fa-solid fa-credit-card'></i> */}
-                                <img src={png} width='70' />
+                                <img src={png} width='70' alt='메뉴 아이콘'/>
                             </span>
                         </div>
                         <div className={styles['menu-body']}>
@@ -50,7 +50,7 @@ export default function Menu() {
                         <div className={styles['menu-icon']}>
                             <span className='icon has-text-info'>
                                 {/* <i className='fa-solid fa-credit-card'></i> */}
-                                <img src={png} width='70' />
+                                <img src={png} width='70' alt='메뉴 아이콘'/>
                             </span>
                         </div>
                         <div className={styles['menu-body']}>
