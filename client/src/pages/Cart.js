@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import png from '../js.png';
-import '../css/Cart.css'
+import styles from '../css/Cart.module.css';
 import { Button } from 'react-bootstrap';
 
 export default function Cart() {
@@ -73,5 +73,5 @@ export default function Cart() {
                 </div>
             </div>
         </section>
-    )
+    );
 }
