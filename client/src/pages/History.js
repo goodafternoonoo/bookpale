@@ -27,7 +27,7 @@ export default function () {
                             <Col xs={5}>여성 청바지 / 1개</Col>
                             <Col>배송중</Col>
                             <Col>
-                                <Button variant='danger' onClick={handleClick}>
+                                <Button variant='danger' size={'sm'} onClick={handleClick}>
                                     주문 취소
                                 </Button>
                             </Col>
@@ -37,7 +37,7 @@ export default function () {
                             <Col xs={5}>가죽 자켓 / 1개</Col>
                             <Col>배송 완료</Col>
                             <Col>
-                                <Button variant='danger' onClick={handleClick}>
+                                <Button variant='danger' size={'sm'} onClick={handleClick}>
                                     주문 취소
                                 </Button>
                             </Col>
@@ -47,7 +47,7 @@ export default function () {
                             <Col xs={5}>고라니 / 1개</Col>
                             <Col>상품 준비중</Col>
                             <Col>
-                                <Button variant='danger' onClick={handleClick}>
+                                <Button variant='danger' size={'sm'} onClick={handleClick}>
                                     주문 취소
                                 </Button>
                             </Col>
