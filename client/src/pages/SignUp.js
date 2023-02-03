@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../css/SingUp.module.css';
+import styles from '../css/SignUp.module.css';
 import { useNavigate } from 'react-router-dom';
 
 import { FloatingLabel, Form, Button } from 'react-bootstrap';

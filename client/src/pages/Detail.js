@@ -14,7 +14,7 @@ export default function Detail() {
         axios.get(`http://localhost:3001/books/${id}`).then((response) => {
             setBook(response.data);
         });
-    }, []);
+    }, [id]);
 
     function handleClick(e) {
         navigate('/order', {
