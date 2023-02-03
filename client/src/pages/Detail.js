@@ -2,10 +2,11 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import styles from '../css/Detail.module.css';
 import png from '../js.png';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
 export default function Detail() {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [book, setBook] = useState({});
 
@@ -14,6 +15,14 @@ export default function Detail() {
             setBook(response.data);
         });
     }, []);
+
+    function handleClick(e) {
+        navigate('/order', {
+            state: {
+                book,
+            },
+        });
+    }
 
     return (
         <div className='container '>
@@ -31,9 +40,9 @@ export default function Detail() {
                     </div>
                     <div className={styles.buttons}>
                         <Button>장바구니</Button>
-                        <Link to='/order'>
-                            <Button>구매하기</Button>
-                        </Link>
+                        {/* <Link to='/order'> */}
+                        <Button onClick={handleClick}>구매하기</Button>
+                        {/* </Link> */}
                     </div>
                 </div>
             </div>

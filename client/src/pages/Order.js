@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import DaumPostCode from 'react-daum-postcode';
 
 import Modal from '../components/Modal.js';
 
 export default function Order() {
+    const location = useLocation();
+    const { book } = location.state;
+
     const [user, setUser] = useState({});
     const [zipCode, setZipcode] = useState('');
     const [address, setAddress] = useState('');
-    // const [openPostcode, setOpenPostcode] = useState(false);
 
     //추후 토큰으로 로그인 된 계정의 id값을 이용하여 회원 정보를 조회 현재는 임시 데이터 바인딩
     useEffect(() => {
@@ -66,11 +68,9 @@ export default function Order() {
                                         <label htmlFor='address2'>
                                             <span className='text-muted'></span>
                                         </label>
-                                        {
-                                            <Modal title='주소 찾기' onClick={handle.clickButton}>
-                                                <DaumPostCode onComplete={handle.selectAddress} autoClose={false} />
-                                            </Modal>
-                                        }
+                                        <Modal title='주소 찾기'>
+                                            <DaumPostCode onComplete={handle.selectAddress} autoClose={false} />
+                                        </Modal>
                                     </div>
                                 </div>
                                 <div className='row'>
@@ -94,17 +94,17 @@ export default function Order() {
                         <div className='input-form col-md-12 mx-auto d-flex flex-column justify-content-between'>
                             <h4 className='mb-3'>결제정보</h4>
                             <div className='d-flex flex-column align-items-end'>
-                                <div className='col-md-4 mb-3 d-flex justify-content-between'>
+                                <div className='col-md-12 mb-3 d-flex justify-content-between'>
                                     <label htmlFor='name'>주문상품</label>
-                                    <span>물품 / 수량</span>
+                                    <span>{book.title} / 1개</span>
                                 </div>
-                                <div className='col-md-4 mb-3 d-flex justify-content-between'>
+                                <div className='col-md-12 mb-3 d-flex justify-content-between'>
                                     <label htmlFor='name'>상품총액</label>
-                                    <span>수량 * 가격</span>
+                                    <span>{Number(book.price).toLocaleString()}원</span>
                                 </div>
-                                <div className='col-md-4 mb-3 d-flex justify-content-between'>
+                                <div className='col-md-12 mb-3 d-flex justify-content-between'>
                                     <label htmlFor='name'>배송비</label>
-                                    <span>배송가격</span>
+                                    <span>3,000원</span>
                                 </div>
                             </div>
                             <div className='mb-4'></div>
