@@ -51,7 +51,6 @@
             "price": "10000"
         }
     ],
-
     "users": [
         {
             "id": "1",
@@ -72,6 +71,16 @@
                 "address2": "303동 1003호"
             },
             "name": "테스트유저2"
+        }
+    ],
+    "category": [
+        {
+            "id": "1",
+            "categoryName": "문학"
+        },
+        {
+            "categoryName": "철학",
+            "id": "aTmMjvt"
         }
     ]
 }
