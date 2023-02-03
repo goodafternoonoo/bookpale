@@ -1,7 +1,7 @@
 const express = require('express');
 var cors = require('cors');
 const app = express();
-const UserRouter = require('./routers/UserRouter');
+// const UserRouter = require('./routers/UserRouter');
 const db = require('./db.js');
 const { User } = require('./db/models/Users');
 
@@ -33,12 +33,12 @@ async function main() {
 }
 
 app.use(cors());
-app.use('/auth',UserRouter)
+// app.use('/auth',UserRouter)
 app.get('/', function (req, res) {
     res.send('Hello')
 })
 
 
-app.listen(8080, function () {
-  console.log('listening on 8080')
+app.listen(3000, function () {
+  console.log('listening on 3000');
 });
