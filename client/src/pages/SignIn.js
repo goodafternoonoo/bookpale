@@ -1,11 +1,16 @@
-import React from 'react';
+import React,{ useState, useEffect } from 'react';
 import styles from '../css/SignIn.module.css';
 import { useNavigate } from 'react-router-dom';
 
 import { FloatingLabel, Form, Button } from 'react-bootstrap';
 
 export default function SignIn() {
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const navigate = useNavigate();
+
+
 
     return (
         <>
@@ -14,6 +19,7 @@ export default function SignIn() {
                 <h1 className='mt-4'>로그인</h1>
                 <hr />
                 {/* 로그인 입력창  */}
+                <div className=''></div>
                 <FloatingLabel controlId='floatingInput' label='Email address' className='mb-3'>
                     <Form.Control type='email' placeholder='name@example.com' />
                 </FloatingLabel>
