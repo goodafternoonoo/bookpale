@@ -5,75 +5,69 @@
     height: 100%;
 }
 
-.cartHeader {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    border: orange solid 1px;
-}
-/*
 .cartHeader h1,
 .cartHeader h6 {
     display: inline;
-    vertical-align: bottom;
 }
-*/
+
 .cartBody {
     display: flex;
     width: 100%;
-    border: yellow solid 1px;
 }
 
 .cartList {
     display: inline;
-    border: blue solid 1px;
     width: 60%;
     flex-direction: column;
+    justify-content: center;
+    align-content: center;
     margin: 10px;
     padding: 10px;
 }
 
 .cartCheck {
     display: inline;
-    border: green solid 1px;
 }
 
 .cartItems {
     display: flex;
     justify-content: space-between;
-    border: navy solid 1px;
+    height: min-content;
 }
 
 .SelectCheckbox {
     width: 5%;
-    border: red solid 1px;
 }
 
-.productImage {
-    width: 20%;
-    border: red solid 1px;
+.cartItems img {
+    width: 50px;
+    object-fit: scale-down;
 }
 
 .productContent {
     width: 20%;
-    border: red solid 1px;
+}
+
+/* 버튼 크기 조절 */
+/* 버튼 한 줄로 */
+.productQuentity {
+    display: inline-block;
 }
 
 .calculation {
     width: 35%;
-    border: red solid 1px;
+    justify-content: space-between;
 }
 
 .deleteButton {
     width: 10%;
-    border: red solid 1px;
+    height: 30px;
 }
 
 .cartSummary {
     width: 40%;
     margin: 10px;
     padding: 10px;
-    border: purple solid 1px;
 }
 
 .summaryInfo {
@@ -82,12 +76,19 @@
     padding-top: 5px;
     padding-bottom: 5px;
     justify-content: space-between;
-    border: black solid 1px;
+}
+
+.summaryInfo p {
+    text-align: center;
+    /* p태그에 기본적으로 margin-bottom: 1rem 들어간다고 해서 강제로 넣음 */
+    margin-bottom: 0rem;
 }
 
 .totalInfo {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 5%;
-    border: black solid 1px;
+}
+
+.totalInfo h4 {
+    text-align: center;
 }
