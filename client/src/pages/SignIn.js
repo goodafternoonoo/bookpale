@@ -7,7 +7,7 @@ import { FloatingLabel, Form, Button } from 'react-bootstrap';
 export default function SignIn() {
 
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+   
     const navigate = useNavigate();
 
 
