@@ -1,164 +1,93 @@
-.cart-section {
-    height: 80vh;
-    border: solid 1px;
+.cartContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 5% 10%;
+    height: 100%;
+}
+
+.cartHeader {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border: orange solid 1px;
+}
+/*
+.cartHeader h1,
+.cartHeader h6 {
+    display: inline;
+    vertical-align: bottom;
+}
+*/
+.cartBody {
+    display: flex;
+    width: 100%;
+    border: yellow solid 1px;
+}
+
+.cartList {
+    display: inline;
+    border: blue solid 1px;
+    width: 60%;
+    flex-direction: column;
     margin: 10px;
     padding: 10px;
 }
 
-.cart-container {
-    display: block;
-    height: 100%;
-}
-
-.cart-container h1,
-.cart-container h6 {
+.cartCheck {
     display: inline;
-    vertical-align: bottom;
+    border: green solid 1px;
 }
 
-.cart-container h1 {
-    font-weight: bold;
+.cartItems {
+    display: flex;
+    justify-content: space-between;
+    border: navy solid 1px;
 }
 
-.cart-main {
-    border: solid 1px;
+.SelectCheckbox {
+    width: 5%;
+    border: red solid 1px;
 }
 
-.cart-product-container {
-    display: inline;
-    vertical-align: bottom;
-}
-/*
-.cart-list {
-
+.productImage {
+    width: 20%;
+    border: red solid 1px;
 }
 
-.cart-product-header {
-
-}
-
-.checkbox {
-
-}
-
-#SelectCheckbox {
-
-}
-
-.help {
-
-}
-
-.seperator {
-
-}
-
-.help-separator {
-
-}
-
-.delete-part {
-
-}
-
-.cart-product-item {
-
-}
-
-.product-image {
-
-}
-
-.product-content {
-
-}
-
-#productName {
-
-}
-
-
-.quantity {
-
-}
-
-.minus {
-
-}
-
-.input-quentity {
-
-}
-
-.plus {
-
+.productContent {
+    width: 20%;
+    border: red solid 1px;
 }
 
 .calculation {
-
+    width: 35%;
+    border: red solid 1px;
 }
 
-#productPrice {
-
+.deleteButton {
+    width: 10%;
+    border: red solid 1px;
 }
 
-#multifly {
-
+.cartSummary {
+    width: 40%;
+    margin: 10px;
+    padding: 10px;
+    border: purple solid 1px;
 }
 
-#updatedQuantity {
-
+.summaryInfo {
+    height: fit-content;
+    display: flex;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    justify-content: space-between;
+    border: black solid 1px;
 }
 
-#equal {
-
+.totalInfo {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 5%;
+    border: black solid 1px;
 }
-
-#totalPrice {
-
-}
-
-.delete-button {
-
-}
-
-.cart-summary {
-
-}
-
-.cart-order-summary {
-
-}
-
-.cart-order-header {
-
-}
-
-.cart-order-info {
-
-}
-
-.info {
-
-}
-
-#productsCount {
-
-}
-
-#deliveryFee {
-
-}
-
-#totalPrice {
-
-}
-
-.purchase {
-
-}
-
-.purchaseButton {
-
-}
-*/
