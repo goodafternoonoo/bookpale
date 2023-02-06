@@ -2,8 +2,8 @@ const express = require('express');
 var cors = require('cors');
 const app = express();
 // const UserRouter = require('./routers/UserRouter');
-const db = require('./db.js');
-const { User } = require('./db/models/Users');
+// const db = require('./db.js');
+const { User, Product } = require('./db/models/Users');
 
 //db(); //db 연결시 주석 해제 
 
