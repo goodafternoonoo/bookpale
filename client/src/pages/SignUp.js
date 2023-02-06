@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../css/SignUp.module.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,6 +6,21 @@ import { FloatingLabel, Form, Button } from 'react-bootstrap';
 
 export default function SignUp() {
     const navigate = useNavigate();
+
+    // useState로 필요한 상태 지정하기 
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    // 이메일 유효성 검사로직
+    const validateEmail = (email) => {
+      return email
+        .toLowerCase()
+        .match(
+          
+        )
+    }
+  
+
 
     return (
         <>
