@@ -1,10 +1,12 @@
 //db 연결 파일
+const { ATLAS_NAME, ATLAS_PWD } = process.env;
 const mongoose = require('mongoose');
 mongoose.set('strictQuery',true);
 
 module.exports = () => {
   function connect() {
-    mongoose.connect('mongodb://localhost:27017', function(err) {
+    mongoose.connect(
+      `mongodb+srv://${ATLAS_NAME}:${ATLAS_PWD}@atlascluster.vaw0jlk.mongodb.net/?retryWrites=true&w=majority`, function (err) {
       if (err) {
         console.error('mongodb connection error', err);
       }
@@ -13,5 +15,4 @@ module.exports = () => {
   }
   connect();
   mongoose.connection.on('disconnected', connect);
-  require('./db/models/test'); //모델 사용...
 };

@@ -1,16 +1,14 @@
 //console.log("router 123 file");
 const { Router } = require('express');
-const path = require("path");
+//const path = require("path");
 const router = Router();
 
 router.post('/signup', async (req, res, next) => {
- // res.send("회원가입 ");
-  res.sendFile(path.join(__dirname ,'../views/signup.html'));
+  res.send("회원가입 ");
 });
 
 router.post('/login', async (req, res, next) => {
-  //res.send("로그인  ");
-  res.sendFile(path.join(__dirname ,'../views/login.html'));
+  res.send("로그인  ");
 });
 
 module.exports = router;
