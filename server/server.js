@@ -1,36 +1,38 @@
-const express = require('express');
-var cors = require('cors');
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import moragn from 'morgan';
+import cookieParser from 'cookie-parser';
+import 'express-async-errors';
+
+
+// express를 app에 선언 
 const app = express();
-// const UserRouter = require('./routers/UserRouter');
-// const db = require('./db.js');
-const { User, Product } = require('./db/models/Users');
 
-//db(); //db 연결시 주석 해제 
+/* json으로 이루어진 Requset body를 요청받았을때 요청값을 제대로 받아오기위해
+  body-parser 대신 사용하는 코드 */
+app.use(express.json());
 
-async function main() {
-  console.log('------게시글을 생성합니다-----');
-  await User.create([
-    { title: 'first', name:'first post' },
-    { title: 'second', name: 'second post' },
-  ]);
+// var cors로 선언했던 부분 안에 요청 메서드와 CORS 정책 초기값, URL 선언
+app.use(
+  cors({
+    origin: 'http//localhost:3000',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  })
+);
 
-  const users= await User.find({});
-  
+// package.json에 선언한 npm패키지 사용선언 
+app.use(helmet());
+/* 요청과 응답에 대한 정보를 콘솔로 기록해주는 것*/
+app.use(moragn('titny'));
+app.use(cookieParser());
 
-  console.log('------게시글이 생성되었습니다-----');
-  users.map(({ title, name }) => {
-    console.log(`제목: ${title}, 이름: ${name}`);
-  });
+app.use('/')
 
-  console.log('------제목이 없는 게시글을 생성합니다-----');
-  try {
-    await User.create({ title: 'post with no title' });
-  } catch(err) {
-    console.log('------게시글이 생성에 오류가 발생했습니다-----');
-    console.log(err.message);
-  }
-  
-}
+
+// const { User, Product } = require('./db/models/Users');
+
 
 app.use(cors());
 // app.use('/auth',UserRouter)
