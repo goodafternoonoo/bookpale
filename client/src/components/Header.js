@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 
+import { AppContext } from '../App';
+
 export default function Header() {
     const navigate = useNavigate();
 
-    const [categories, setCategories] = useState([]);
+    const { categories, setCategories } = useContext(AppContext);
 
     useEffect(() => {
         axios.get(`http://localhost:3001/category`).then((response) => {
