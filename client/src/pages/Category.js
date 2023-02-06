@@ -62,7 +62,7 @@ export default function Category() {
     return (
         <div>
             <Container>
-                <h1 className='mt-3'>카테고리 추가</h1>
+                <h1 className='mt-3'>카테고리 관리</h1>
                 <hr />
                 <div className='d-flex justify-content-between'>
                     <div className='input-form-backgroud row mb-5 w-50'>
