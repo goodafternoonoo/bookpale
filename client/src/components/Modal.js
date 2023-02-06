@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-export default function ModalForm({ title, children }) {
+export default function ModalForm({ title, children, className }) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -10,7 +10,7 @@ export default function ModalForm({ title, children }) {
 
     return (
         <>
-            <Button variant='secondary' className='d-block col-md-12' onClick={handleShow}>
+            <Button variant='secondary' className={className} onClick={handleShow}>
                 {title}
             </Button>
 

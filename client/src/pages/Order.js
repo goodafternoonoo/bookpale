@@ -68,7 +68,7 @@ export default function Order() {
                                         <label htmlFor='address2'>
                                             <span className='text-muted'></span>
                                         </label>
-                                        <Modal title='주소 찾기'>
+                                        <Modal title='주소 찾기' className='d-block col-md-12'>
                                             <DaumPostCode onComplete={handle.selectAddress} autoClose={false} />
                                         </Modal>
                                     </div>
