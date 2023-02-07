@@ -25,15 +25,15 @@ export default function SignIn({ signinHandler }) {
         e.preventDefault();
 
         // 입력받는 데이터 폼을 객체 변수로 선언
-        const dataForm = {
-            email,
-            password,
-        };
+        // const dataForm = {
+        //     email,
+        //     password,
+        // };
         // 이 구문에서 axios통신을 할 예정
         try {
             await axios.post(
                 `http://localhost:3000/auth/signin`,
-                { ...dataForm },
+                { email, password },
                 {
                     headers: {
                         'Content-Type': 'application/json',
