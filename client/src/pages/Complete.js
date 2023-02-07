@@ -10,9 +10,11 @@ export default function Complete() {
                 <div className='input-form col-md-12 mx-auto' style={{ maxWidth: '380px', marginTop: '5rem' }}>
                     <h4 className='mb-5 text-center'>주문이 완료되었습니다!</h4>
                     <div className='d-flex flex-column w-75 mx-auto'>
-                        <Button className='mb-3 mt-3' variant='secondary'>
-                            주문내역 보기
-                        </Button>
+                        <Link to='/history'>
+                            <Button className='mb-3 mt-3 w-100' variant='secondary'>
+                                주문내역 보기
+                            </Button>
+                        </Link>
                         <Link to='/'>
                             <Button className='w-100'>쇼핑 계속하기</Button>
                         </Link>

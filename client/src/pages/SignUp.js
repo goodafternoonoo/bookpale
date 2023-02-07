@@ -105,7 +105,7 @@ export default function SignUp() {
                                     <label htmlFor='address2'>
                                         우편번호<span className='text-muted'></span>
                                     </label>
-                                    <Form.Control type='text' className='form-control' id='zipCode' name='zipCode' value={zipCode} placeholder='우편번호를 입력해주세요.' />
+                                    <Form.Control type='text' className='form-control' id='zipCode' name='zipCode' value={zipCode} onChange={(e) => setZipcode(e.target.value)} placeholder='우편번호를 입력해주세요.' />
                                 </div>
                                 <div className='mb-3 col-md-6'>
                                     <label htmlFor='address2'>
@@ -119,7 +119,7 @@ export default function SignUp() {
                             <div className='row'>
                                 <div className='mb-3 col-md-7'>
                                     <label htmlFor='address1'>주소</label>
-                                    <Form.Control type='text' className='form-control' id='address1' name='address1' value={address} placeholder='주소를 입력해주세요.' required />
+                                    <Form.Control type='text' className='form-control' id='address1' name='address1' value={address} onChange={(e) => setAddress(e.target.value)} placeholder='주소를 입력해주세요.' required />
                                     <div className='invalid-feedback'>주소를 입력해주세요.</div>
                                 </div>
                                 <div className='mb-3 col-md-5'>

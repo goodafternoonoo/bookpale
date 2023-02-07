@@ -17,8 +17,6 @@ router.post('/signup', async (req, res, next) => {
         name: name,
     };
 
-    console.log(user);
-
     User.create(user)
         .then((user) => res.send(user))
         .catch((err) => res.status(500).send(err));

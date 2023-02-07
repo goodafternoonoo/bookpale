@@ -1,4 +1,23 @@
 {
+    "carts": [
+        {
+            "id": "userId",
+            "cart": [
+                {
+                    "bookId": "1",
+                    "bookName": "노드 기초",
+                    "price": "10000",
+                    "amount": "1"
+                },
+                {
+                    "bookId": "2",
+                    "bookName": "리액트 기초",
+                    "price": "10000",
+                    "amount": "3"
+                }
+            ]
+        }
+    ],
     "books": [
         {
             "id": "1",
