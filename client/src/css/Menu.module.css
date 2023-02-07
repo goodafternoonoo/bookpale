@@ -3,6 +3,7 @@
     grid-gap: 2rem;
     grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
     text-decoration: none;
+    margin-bottom: 3rem;
 }
 
 .menu-card {
