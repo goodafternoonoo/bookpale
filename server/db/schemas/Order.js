@@ -5,6 +5,10 @@ const OrderSchema = new Schema ({
         type: [Number], //??
         required: true,
     },
+    totalPrice: {
+        type: Number,
+        required: true,
+    },
     address: {
         zipCode: {
             type: String,
@@ -34,11 +38,7 @@ const OrderSchema = new Schema ({
     status: {
         type: String,
         required: false,
-        default: '배송준비중', //??
-    },
-    orderid: {
-        type: Schema.Types.ObjectId,
-        required: false,
+        default: '배송준비중',
     },
 },
 {
