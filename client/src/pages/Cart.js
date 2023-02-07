@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import png from '../js.png';
-import { Button } from 'react-bootstrap';
+import { Button, Form, FormGroup } from 'react-bootstrap';
 import styles from '../css/Cart.module.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,28 +9,69 @@ export default function Cart() {
     const navigate = useNavigate();
 
     //{/* 도서 수량 값 세팅 */}
-    const [books, setBooks] = useState(1);
+    // const [books, setBooks] = useState(1);
+    const [cartsOrg, setCartsOrg] = useState([]);
     const [carts, setCarts] = useState([]);
 
     useEffect(() => {
         axios.get('http://localhost:3001/carts/userId').then((response) => {
+            setCartsOrg(response.data);
             setCarts(response.data.cart);
-            console.log(response.data.cart);
         });
     }, []);
 
-    function increaseBooks() {
-        setBooks(books + 1);
-    }
+    // function increaseBooks() {
+    //     setBooks(books + 1);
+    // }
 
-    function decreaseBooks() {
-        setBooks(books - 1);
-    }
+    // function decreaseBooks() {
+    //     setBooks(books - 1);
+    // }
 
     //{/* 결제하기 페이지 넘기기 */}
     function ClickOrder(e) {
         e.preventDefault();
         navigate('/order');
+    }
+
+    function handleChangeAmount(id, e) {
+        const copy = { ...cartsOrg };
+
+        cartsOrg.cart.map((item) => {
+            if (item.bookId === id) {
+                item.amount = e.target.value;
+            }
+        });
+
+        console.log(cartsOrg);
+
+        //로그인 구현 후, userId를 동적으로 담아주세요
+        axios.patch(`http://localhost:3001/carts/userId`, copy).then(() => {
+            setCartsOrg(copy);
+            setCarts(copy.cart);
+        });
+    }
+
+    function handleClickDeleteAll() {
+        if (window.confirm('장바구니를 비우시겠습니까?')) {
+            axios.delete(`http://localhost:3001/carts/userId`).then(() => {
+                alert('장바구니를 비웠습니다.');
+                setCartsOrg([]);
+                setCarts([]);
+            });
+        }
+    }
+
+    function handleClickDelete(id) {
+        const copy = { ...cartsOrg };
+        copy.cart = cartsOrg.cart.filter((item) => item.bookId != id);
+
+        //로그인 구현 후, userId를 동적으로 담아주세요
+        axios.patch(`http://localhost:3001/carts/userId`, copy).then(() => {
+            alert('삭제되었습니다.');
+            setCartsOrg(copy);
+            setCarts(copy.cart);
+        });
     }
 
     return (
@@ -49,11 +90,13 @@ export default function Cart() {
                 <div className={styles['cartList']}>
                     {/* 장바구니 전체선택 체크박스 */}
                     <div className={styles['cartCheck']}>
-                        <input type='checkbox' id='allSelectCheckbox' />
+                        {/* <input type='checkbox' id='allSelectCheckbox' /> */}
                         {/* 선택 시 장바구니 속 모든 상품 체크박스 체크되도록 추가 예정 */}
-                        <label>&nbsp; 전체선택 &nbsp; | &nbsp;</label>
+                        {/* <label>&nbsp; 전체선택 &nbsp; | &nbsp;</label> */}
                         {/* 선택삭제 기능 추가 예정 */}
-                        <label>선택삭제</label>
+                        <Button variant='danger' onClick={handleClickDeleteAll}>
+                            전체삭제
+                        </Button>
                         <hr />
                     </div>
 
@@ -62,18 +105,19 @@ export default function Cart() {
                     {carts &&
                         carts.map((cart) => {
                             return (
-                                <div className={styles['cartItems']}>
+                                <div key={cart.bookId} className={styles['cartItems']}>
                                     {/* 체크박스 하나씩 인식할 수 있도록 기능 추가 */}
-                                    <input type='checkbox' id='SelectCheckbox' />
+                                    {/* <input type='checkbox' id='SelectCheckbox' /> */}
                                     <img id='' src={png} alt=''></img>
                                     <div className={styles['productContent']}>
                                         <h4 className={styles['productName']}>{cart.bookName}</h4>
                                         {/* 도서 수량 최소 1권 이상 99권 이하로 지정될 수 있도록 변경 예정 */}
                                         {/* 버튼/div 한 줄로 배치 변경 예정 */}
                                         <div className='productQuentity'>
-                                            <button onClick={decreaseBooks}>-</button>
+                                            <Form.Control defaultValue={cart.amount} type='number' onChange={(e) => handleChangeAmount(cart.bookId, e)}></Form.Control>
+                                            {/* <button onClick={decreaseBooks}>-</button>
                                             <div>{books}</div>
-                                            <button onClick={increaseBooks}>+</button>
+                                            <button onClick={increaseBooks}>+</button> */}
                                         </div>
                                     </div>
 
@@ -87,7 +131,9 @@ export default function Cart() {
                                         {/* price * Quantity 로 변경 예정 */}
                                         <p id='totalPrice'>{(Number(cart.price) * Number(cart.amount)).toLocaleString()}원</p>
                                     </div>
-                                    <button className={styles['deleteButton']}>삭제</button>
+                                    <Button className='h-25 my-auto' variant='danger' onClick={() => handleClickDelete(cart.bookId)}>
+                                        삭제
+                                    </Button>
                                 </div>
                             );
                         })}
