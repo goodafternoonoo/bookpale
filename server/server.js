@@ -1,10 +1,13 @@
-import express from 'express';
-import cors from 'cors';
-import helmet from 'helmet';
-import moragn from 'morgan';
-import cookieParser from 'cookie-parser';
-import 'express-async-errors';
+require('dotenv').config();
+require('express-async-errors');
+require('./database/database.js');
+const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const cookieParser = require('cookie-parser');
 
+// import { connect } from 'mongoose';
+// import morgan from 'morgan';
 
 // express를 app에 선언 
 const app = express();
@@ -25,22 +28,29 @@ app.use(
 // package.json에 선언한 npm패키지 사용선언 
 app.use(helmet());
 /* 요청과 응답에 대한 정보를 콘솔로 기록해주는 것*/
-app.use(moragn('titny'));
+// app.use(morgan('tiny'));
 app.use(cookieParser());
+app.use(express.urlencoded({ extended: false }));
 
-app.use('/')
+// 라우터 설정할 코드모음 
+// app.use('/auth');
+
+app.use((error, req, res, next) => {
+  if(error) {
+    console.log(error);
+    res.status(500).json({ message: 'Something Wrong!'});
+  }
+});
 
 
-// const { User, Product } = require('./db/models/Users');
+// mongoDB를 연결할할때 서버에서 불러와야할 config설정의 host 포트번호
+// connectDB().then(() => {
+//   console.log('mongoDB is connected');
+//   app.listen(config.host.port);
+// });
 
+const PORT = process.env.PORT || 3000;
 
-app.use(cors());
-// app.use('/auth',UserRouter)
-app.get('/', function (req, res) {
-    res.send('Hello')
-})
-
-
-app.listen(3000, function () {
-  console.log('listening on 3000');
+app.listen(PORT, () => {
+  console.log("서버가 정상적으로 실행되었습니다.", `PORT : ${PORT}`);
 });
