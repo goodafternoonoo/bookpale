@@ -13,7 +13,6 @@ export default function Header() {
     useEffect(() => {
         axios.get(`http://localhost:3001/category`).then((response) => {
             setCategories(response.data);
-            console.log(response.data);
         });
     }, []);
 

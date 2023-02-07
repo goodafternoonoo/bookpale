@@ -1,4 +1,23 @@
 {
+  "carts": [
+    {
+      "id": "userId",
+      "cart": [
+        {
+          "bookId": "1",
+          "bookName": "노드 기초",
+          "price": "10000",
+          "amount": "1"
+        },
+        {
+          "bookId": "2",
+          "bookName": "리액트 기초",
+          "price": "10000",
+          "amount": "100"
+        }
+      ]
+    }
+  ],
   "books": [
     {
       "id": "1",
@@ -55,6 +74,7 @@
     {
       "id": "1",
       "email": "test@test.com",
+      "password": "test",
       "address": {
         "zipCode": "45984",
         "address1": "서울 영등포구 선유로1길 3",
@@ -65,6 +85,7 @@
     {
       "id": "2",
       "email": "test2@test.com",
+      "password": "test",
       "address": {
         "zipCode": "45984",
         "address1": "서울 서대문구 창천로21길 34",
@@ -75,12 +96,12 @@
   ],
   "category": [
     {
-      "categoryName": "비문학",
+      "categoryName": "철학",
       "id": 1
     },
     {
       "categoryName": "IT",
-      "id": 3
+      "id": 2
     }
   ]
 }
