@@ -30,7 +30,7 @@ export default function Header() {
                         {categories.map((category) => {
                             // 추후 id값을 이용한 동적 url 추가
                             return (
-                                <Nav.Link key={category.id} onClick={() => navigate('/')}>
+                                <Nav.Link key={category.id} onClick={() => navigate(`/categoryDisplay/${category.id}`)}>
                                     {category.categoryName}
                                 </Nav.Link>
                             );
