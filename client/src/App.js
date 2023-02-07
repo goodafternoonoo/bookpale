@@ -42,7 +42,7 @@ export default function App() {
                         <Route path='/cart' element={<Cart />}></Route>
                         <Route path='/history' element={<History />}></Route>
                         <Route path='/category' element={<Category />}></Route>
-                        <Route path='/categoryDisplay/:id' element={<CategoryDisplay />}></Route>
+                        <Route path='/categoryDisplay/:categoryName' element={<CategoryDisplay />}></Route>
                         <Route path='/signin' element={<SignIn />}></Route>
                         <Route path='/signup' element={<SignUp />}></Route>
                     </Routes>

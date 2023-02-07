@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useParams } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom'
 import axios from 'axios';
 
 //부트스트랩 모듈 불러오기
@@ -8,23 +9,23 @@ import png from '../js.png';
 
 export default function CategoryDisplay({ children }) {
     const [books, setBooks] = useState([]);
-    const { categoryId } = useParams();
+    const { categoryName } = useParams();
 
     useEffect(() => {
         axios.get('http://localhost:3001/books').then((response) => {
             setBooks(response.data);
         });
     }, []);
-
-    function categorizingBooks(book) {
-        return book.categoryId === categoryId.id;
-    }
     
     return (
         <>
             <Container className='d-flex my-5 py-5'>
                 {books.map((book) => {
+                    console.log(book.categoryId)
+                    console.log(categoryName)
                     return (
+                        <>
+                        {book.categoryId === categoryName &&
                         <Card key={book.id} style={{ width: '20%', margin: '0 10px' }}>
                             <Link to={`/detail/${book.id}`}>
                                 <Card.Img variant='top' src={png} />
@@ -34,6 +35,7 @@ export default function CategoryDisplay({ children }) {
                                 <Card.Text>{Number(book.price).toLocaleString()}원</Card.Text>
                             </Card.Body>
                         </Card>
+                        }</>
                     );
                 })}
             </Container>
