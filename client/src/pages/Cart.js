@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import png from '../js.png';
-import { Button, Form, FormGroup } from 'react-bootstrap';
+import { Button, Form, FormGroup, Row, Col } from 'react-bootstrap';
 import styles from '../css/Cart.module.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -43,8 +43,6 @@ export default function Cart() {
             }
         });
 
-        console.log(cartsOrg);
-
         //로그인 구현 후, userId를 동적으로 담아주세요
         axios.patch(`http://localhost:3001/carts/userId`, copy).then(() => {
             setCartsOrg(copy);
@@ -54,7 +52,7 @@ export default function Cart() {
 
     function handleClickDeleteAll() {
         if (window.confirm('장바구니를 비우시겠습니까?')) {
-            axios.delete(`http://localhost:3001/carts/userId`).then(() => {
+            axios.put(`http://localhost:3001/carts/userId`, { ...cartsOrg, cart: [] }).then(() => {
                 alert('장바구니를 비웠습니다.');
                 setCartsOrg([]);
                 setCarts([]);
@@ -105,35 +103,39 @@ export default function Cart() {
                     {carts &&
                         carts.map((cart) => {
                             return (
-                                <div key={cart.bookId} className={styles['cartItems']}>
-                                    {/* 체크박스 하나씩 인식할 수 있도록 기능 추가 */}
-                                    {/* <input type='checkbox' id='SelectCheckbox' /> */}
-                                    <img id='' src={png} alt=''></img>
-                                    <div className={styles['productContent']}>
-                                        <h4 className={styles['productName']}>{cart.bookName}</h4>
-                                        {/* 도서 수량 최소 1권 이상 99권 이하로 지정될 수 있도록 변경 예정 */}
-                                        {/* 버튼/div 한 줄로 배치 변경 예정 */}
-                                        <div className='productQuentity'>
-                                            <Form.Control defaultValue={cart.amount} type='number' onChange={(e) => handleChangeAmount(cart.bookId, e)}></Form.Control>
+                                <div className='mb-5'>
+                                    <div key={cart.bookId} className={styles['cartItems']}>
+                                        {/* 체크박스 하나씩 인식할 수 있도록 기능 추가 */}
+                                        {/* <input type='checkbox' id='SelectCheckbox' /> */}
+                                        <img id='' src={png} alt=''></img>
+                                        <div className={styles['productContent']}>
+                                            <h4 className={styles['productName']}>{cart.bookName}</h4>
+                                            {/* 도서 수량 최소 1권 이상 99권 이하로 지정될 수 있도록 변경 예정 */}
+                                            {/* 버튼/div 한 줄로 배치 변경 예정 */}
+                                            {/* <div className='productQuentity'> */}
+                                            <Row>
+                                                <label className='w-50 my-auto'>수량 : </label>
+                                                <Form.Control className='w-50' defaultValue={cart.amount} type='number' onChange={(e) => handleChangeAmount(cart.bookId, e)} />
+                                            </Row>
                                             {/* <button onClick={decreaseBooks}>-</button>
-                                            <div>{books}</div>
-                                            <button onClick={increaseBooks}>+</button> */}
+                                                <div>{books}</div>
+                                                <button onClick={increaseBooks}>+</button> */}
+                                            {/* </div> */}
                                         </div>
+                                        {/* 요소들 한 줄로 배열 변경 예정 */}
+                                        <div className={(styles['calculation'], 'd-flex align-items-center')}>
+                                            {/* 상품 가격 받아오는 가격으로 변경 예정 */}
+                                            <span id='productPrice'>{Number(cart.price).toLocaleString()}원</span>
+                                            <span id='multifly'>×</span>
+                                            <span id='updatedQuantity'>{Number(cart.amount).toLocaleString()}개</span>
+                                            <span id='equal'>=</span>
+                                            {/* price * Quantity 로 변경 예정 */}
+                                            <span id='totalPrice'>{(Number(cart.price) * Number(cart.amount)).toLocaleString()}원</span>
+                                        </div>
+                                        <Button className='h-25 my-auto' variant='danger' onClick={() => handleClickDelete(cart.bookId)}>
+                                            삭제
+                                        </Button>
                                     </div>
-
-                                    {/* 요소들 한 줄로 배열 변경 예정 */}
-                                    <div className={styles['calculation']}>
-                                        {/* 상품 가격 받아오는 가격으로 변경 예정 */}
-                                        <p id='productPrice'>{Number(cart.price).toLocaleString()}원</p>
-                                        <p id='multifly'>×</p>
-                                        <p id='updatedQuantity'>{Number(cart.amount).toLocaleString()}개</p>
-                                        <p id='equal'>=</p>
-                                        {/* price * Quantity 로 변경 예정 */}
-                                        <p id='totalPrice'>{(Number(cart.price) * Number(cart.amount)).toLocaleString()}원</p>
-                                    </div>
-                                    <Button className='h-25 my-auto' variant='danger' onClick={() => handleClickDelete(cart.bookId)}>
-                                        삭제
-                                    </Button>
                                 </div>
                             );
                         })}
