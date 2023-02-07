@@ -48,7 +48,7 @@ const CategoryRouter = require('./routers/categoryRouter');
 const ProductRouter = require('./routers/productRouter');
 const OrderRouter = require('./routers/orderRouter');
 
-db(); //db 연결시 주석 해제 
+// db(); //db 연결시 주석 해제 
 
 app.use(cors());
 app.use(express.json());
