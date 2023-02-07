@@ -62,7 +62,7 @@ export default function Order() {
                                         <label htmlFor='address2'>
                                             우편번호<span className='text-muted'></span>
                                         </label>
-                                        <input type='text' className='form-control' id='address2' placeholder='상세주소를 입력해주세요.' defaultValue={zipCode} />
+                                        <input type='text' className='form-control' id='address2' placeholder='우편번호를 입력해주세요.' defaultValue={zipCode} />
                                     </div>
                                     <div className='mb-3 col-md-6'>
                                         <label htmlFor='address2'>
