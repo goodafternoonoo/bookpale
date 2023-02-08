@@ -1,15 +1,16 @@
 // express에서 Router로 지정을 하면 express만 불러오고 라우트요청이 가능한가요?
 import express from 'express';
-import category from '../db/schemas/category.js';
+import Category from '../db/schemas/category.js';
 
 const categoryRouter = express.Router();
 
-//GET방식 http://localhost:3000/categories 요청 - 카테고리 조회
+//카테고리 조회 
+//GET http://localhost:3000/categories 
 categoryRouter.get('/', async (req, res, next) => {
     try {
         const categories = await Category.find({});
         //Category스키마의 모든 데이터를 조회
-        res.send(categories);
+        res.status(200).json(categories);
         // const data=categories.map((item)=>{return item.categoryname});
         // res.send(data);
     } catch (err) {
@@ -18,28 +19,29 @@ categoryRouter.get('/', async (req, res, next) => {
     }
 });
 
-//POST방식 http://localhost:3000/categories 요청 - 카테고리 생성
+//카테고리 생성
+//POST http://localhost:3000/categories 
 categoryRouter.post('/', async (req, res, next) => {
-    const { categoryname } = req.body;
+    const { name } = req.body;
     try {
         const categories = await Category.create({
-            categoryname: categoryname,
+            name:name,
         });
-        res.send('create 성공');
-        console.log(categories);
+        res.redirect('/categories');
     } catch (err) {
         console.error(err);
         res.send('create 실패');
     }
 });
 
-//PUT방식 http://localhost:3000/categories/:categoryId 요청 - 카테고리 수정
+//카테고리 수정
+//PUT http://localhost:3000/categories/:categoryId 
 categoryRouter.put('/:categoryId', async (req, res, next) => {
     const { categoryId } = req.params;
-    const { newcategoryname } = req.body;
+    const { name } = req.body;
     try {
         await Category.findByIdAndUpdate(categoryId, {
-            categoryname: newcategoryname,
+            name: name,
         });
         res.redirect('/categories');
     } catch (err) {
@@ -48,7 +50,8 @@ categoryRouter.put('/:categoryId', async (req, res, next) => {
     }
 });
 
-//DELETE방식 http://localhost:3000/categories/:categoryId 요청 - 카테고리 삭제
+//카테고리 삭제
+//DELETE http://localhost:3000/categories/:categoryId 
 categoryRouter.delete('/:categoryId', async (req, res, next) => {
     const { categoryId } = req.params;
     try {

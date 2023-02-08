@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import mongoose,{ Schema }from 'mongoose';
 
 
 const categorySchema = new Schema({
@@ -15,4 +15,5 @@ const categorySchema = new Schema({
 );
 
 // import문에서는 export default
-export default categorySchema;
+const model = mongoose.model("Category",categorySchema);
+export default model;

@@ -9,7 +9,7 @@ import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 
 // 라우터 설정 
-import userRouter from './routers/userRouter.js'
+//import userRouter from './routers/userRouter.js'
 import categoryRouter from './routers/categoryRouter.js';
 import productRouter from './routers/productRouter.js';
 import orderRouter from './routers/orderRouter.js';
@@ -62,9 +62,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 
-app.use('/auth', userRouter);
+//app.use('/auth', userRouter);
 app.use('/categories', categoryRouter);
-app.use('/product', productRouter);
+app.use('/products', productRouter);
 app.use('/orders', orderRouter);
 
 // mongoDB를 연결할할때 서버에서 불러와야할 config설정의 host 포트번호
