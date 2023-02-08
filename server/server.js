@@ -62,7 +62,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 
-//app.use('/auth', userRouter);
+app.use('/auth', userRouter);
 app.use('/categories', categoryRouter);
 app.use('/products', productRouter);
 app.use('/orders', orderRouter);
