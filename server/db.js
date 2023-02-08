@@ -19,21 +19,3 @@ const db = mongoose.connection;
 db.on("connected", () => console.log("정상적으로 MongoDB Atlas서버에 연결되었습니다." + DB_URL));
 // 연결 실패시
 db.on("error", (error) => console.error("MongoDB Atlas 서버 연결에 실패했습니다.." + DB_URL + error));
-
-
-
-
-// module.exports = () => {
-//     function connect() {
-//         mongoose.connect(`mongodb+srv://${ATLAS_NAME}:${ATLAS_PWD}@atlascluster.vaw0jlk.mongodb.net/?retryWrites=true&w=majority`, function (err) {
-//             if (err) {
-//                 console.error('mongodb connection error', err);
-//             } else {
-//                 console.log('mongodb connected');
-//             }
-//         });
-//     }
-
-//     connect();
-//     mongoose.connection.on('disconnected', connect);
-// };
