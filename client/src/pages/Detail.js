@@ -9,28 +9,23 @@ export default function Detail() {
     const navigate = useNavigate();
     const { id } = useParams();
     const [book, setBook] = useState({});
-    const [carts, setCarts] = useState([]);
 
     useEffect(() => {
         axios.get(`http://localhost:3001/books/${id}`).then((response) => {
             setBook(response.data);
         });
-
-        axios.get('http://localhost:3001/carts/userId').then((response) => {
-            setCarts(response.data);
-        });
     }, [id]);
 
     function handleClickCart(e) {
-        const cart = { ...carts };
-        cart.cart = [...cart.cart, { bookId: book.id, bookName: book.title, price: book.price, amount: '1' }];
+        const cart = JSON?.parse(localStorage.getItem('cart'));
+        const isCart = cart?.find((item) => id === item.id);
 
-        console.log(cart);
+        if (isCart) return alert('이미 장바구니에 존재하는 상품입니다.');
 
-        axios.patch(`http://localhost:3001/carts/userId`, { cart: cart.cart }).then((response) => {
-            alert('장바구니에 추가되었습니다.');
-        });
+        localStorage.setItem('cart', JSON.stringify([...cart, { ...book, amount: '1' }]));
+        alert('장바구니에 추가되었습니다.');
     }
+
     function handleClickBuy(e) {
         navigate('/order', {
             state: {

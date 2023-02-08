@@ -8,22 +8,21 @@ import Modal from '../components/Modal.js';
 
 export default function Order() {
     const location = useLocation();
+    const [isSingle, setIsSingle] = useState(false);
+
     let book;
 
-    if (location.state) book = location.state.book;
+    if (location.state) {
+        book = location.state.book;
+    }
 
     const [user, setUser] = useState({});
-    const [carts, setCarts] = useState([]);
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) ?? []);
     const [zipCode, setZipcode] = useState('');
     const [address, setAddress] = useState('');
 
-    //book state 여부에 따라 book의 데이터 분기처리 : 단건구매 / 다건구매
     useEffect(() => {
-        if (!book) {
-            axios.get('http://localhost:3001/carts/userId').then((response) => {
-                setCarts(response.data.cart);
-            });
-        }
+        if (book) setIsSingle(true);
     }, []);
 
     //추후 토큰으로 로그인 된 계정의 id값을 이용하여 회원 정보를 조회 현재는 임시 데이터 바인딩
@@ -104,27 +103,30 @@ export default function Order() {
                                 <div className='col-md-12 mb-3 d-flex justify-content-between'>
                                     <label htmlFor='name'>주문상품</label>
                                     <div className='d-flex flex-column align-items-end'>
-                                        {book && <span>{book.title} / 1개</span>}
-                                        {carts &&
-                                            carts.map((cart) => {
+                                        {isSingle ? (
+                                            <span>{book.title} / 1개</span>
+                                        ) : (
+                                            cart.map((cart) => {
                                                 return (
                                                     <span key={cart.bookId}>
-                                                        {cart.bookName} / {cart.amount}개
+                                                        {cart.title} / {cart.amount}개
                                                     </span>
                                                 );
-                                            })}
+                                            })
+                                        )}
                                     </div>
                                 </div>
                                 <div className='col-md-12 mb-3 d-flex justify-content-between'>
                                     <label htmlFor='name'>상품총액</label>
                                     <span>
-                                        {book && Number(book?.price).toLocaleString()}
-                                        {carts &&
-                                            carts
-                                                .reduce((a, b) => {
-                                                    return a + Number(b.price * b.amount);
-                                                }, 0)
-                                                .toLocaleString()}
+                                        {isSingle
+                                            ? Number(book?.price).toLocaleString()
+                                            : cart &&
+                                              cart
+                                                  .reduce((a, b) => {
+                                                      return a + Number(b.price * b.amount);
+                                                  }, 0)
+                                                  .toLocaleString()}
                                         원
                                     </span>
                                 </div>
