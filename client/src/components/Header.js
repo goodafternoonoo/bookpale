@@ -6,7 +6,7 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import { AppContext } from '../App';
 
 export default function Header() {
-    const isLogin = localStorage.getItem('user');
+    const isLogin = localStorage.getItem('jwt');
     const navigate = useNavigate();
 
     const { categories, setCategories } = useContext(AppContext);
@@ -43,7 +43,8 @@ export default function Header() {
                         {isLogin ? (
                             <Nav.Link
                                 onClick={() => {
-                                    localStorage.removeItem('user');
+                                    localStorage.removeItem('jwt');
+                                    delete axios.defaults.headers.common['Authorization'];
                                     navigate('/');
                                 }}
                             >

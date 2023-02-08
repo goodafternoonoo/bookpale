@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { FloatingLabel, Form, Button } from 'react-bootstrap';
 
+import setAuthorizationToken from '../util/setAuthorizationToken';
+
 // true로 설정해야 refreshtoken으로 주고 받을 수 있음
 // CROS 정책을 허용한다는 의미
 axios.defaults.withCredentials = true;
@@ -20,8 +22,9 @@ export default function SignIn() {
             .post('http://localhost:3000/auth/login', { email, password })
             .then((response) => {
                 alert('로그인되었습니다.');
-
-                localStorage.setItem('user', response.data);
+                const token = response.data.token;
+                localStorage.setItem('jwt', token);
+                setAuthorizationToken(token);
 
                 navigate('/');
             })
