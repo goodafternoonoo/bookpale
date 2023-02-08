@@ -17,6 +17,7 @@ import BookForm from './components/BookForm.js';
 import SignIn from './pages/SignIn.js';
 import SignUp from './pages/SignUp.js';
 import CategoryDisplay from './pages/CategoryDisplay.js';
+import ProductEdit from './pages/ProductEdit.js';
 
 //전역 상태관리를 위한 컨텍스트 선언
 export const AppContext = createContext();
@@ -45,6 +46,7 @@ export default function App() {
                         <Route path='/categoryDisplay/:categoryName' element={<CategoryDisplay />}></Route>
                         <Route path='/signin' element={<SignIn />}></Route>
                         <Route path='/signup' element={<SignUp />}></Route>
+                        <Route path='/productEdit' element={<ProductEdit />}></Route>
                     </Routes>
                 </Main>
             </div>

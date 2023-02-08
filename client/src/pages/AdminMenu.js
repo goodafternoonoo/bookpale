@@ -45,7 +45,7 @@ export default function Menu() {
                             <p className={(styles['subtitle'], 'text-dark fs-6')}>제품이 속할 수 있는, 카테고리 정보를 추가하거나 수정 및 삭제할 수 있습니다.</p>
                         </div>
                     </Link>
-                    <Link to='/' className={styles['menu-card']}>
+                    <Link to='/ProductEdit' className={styles['menu-card']}>
                         <div className={styles['menu-icon']}>
                             <span className='icon has-text-info'>
                                 {/* <i className='fa-solid fa-credit-card'></i> */}
@@ -53,8 +53,8 @@ export default function Menu() {
                             </span>
                         </div>
                         <div className={styles['menu-body']}>
-                            <p className={(styles['title'], 'text-dark fw-bold fs-4')}>제품 추가</p>
-                            <p className={(styles['subtitle'], 'text-dark fs-6')}>제품 정보를 추가할 수 있습니다.</p>
+                            <p className={(styles['title'], 'text-dark fw-bold fs-4')}>제품 관리</p>
+                            <p className={(styles['subtitle'], 'text-dark fs-6')}>제품 정보를 추가하거나 수정 및 삭제할 수 있습니다.</p>
                         </div>
                     </Link>
                 </div>
