@@ -12,6 +12,7 @@ const DB_URL = process.env.MONGODB_URL;
 mongoose.set('strictQuery', false);
 
 // mongoose의 connection의 행위를 db로 선언
+mongoose.connect(DB_URL);
 const db = mongoose.connection;
 
 // 연결 성공시

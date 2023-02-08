@@ -1,9 +1,10 @@
-const { Router } = require('express');
-const router = Router();
-const Product = require('../db/schemas/Product');
+import { Router } from 'express';
+import Product from '../db/schemas/Product.js'
+
+const productRouter = Router();
 
 //상품 조회
-router.get('/' ,async(req,res)=>{
+productRouter.get('/' ,async(req,res)=>{
   try{
     const products = await Product.find({});
     res.send(products);
@@ -13,4 +14,5 @@ router.get('/' ,async(req,res)=>{
   }
 });
 
-module.exports = router;
+// import 모듈  미사용 
+export default productRouter;

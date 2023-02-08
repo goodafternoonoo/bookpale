@@ -1,4 +1,5 @@
-const { Schema } = require('mongoose');
+// const { Schema } = require('mongoose');
+import { Schema } from 'mongoose';
 
 const OrderSchema = new Schema ({
     productId: {
@@ -45,4 +46,5 @@ const OrderSchema = new Schema ({
     timestamps: true,
 })
 
-module.exports = OrderSchema;
+export default OrderSchema;
+// module.exports = OrderSchema;

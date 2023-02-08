@@ -1,6 +1,7 @@
 // import'./db/schemas/database';
 import "dotenv/config";
 import 'express-async-errors';
+// import './serverOnCheck.js'
 import './db.js'
 import express from 'express';
 import cors from 'cors';
@@ -9,10 +10,14 @@ import cookieParser from 'cookie-parser';
 
 // 라우터 설정 
 import userRouter from './routers/userRouter.js'
+import categoryRouter from './routers/categoryRouter.js';
+import productRouter from './routers/productRouter.js';
+import orderRouter from './routers/orderRouter.js';
+
 // import 
-const CategoryRouter = require('./routers/categoryRouter');
-const ProductRouter = require('./routers/productRouter');
-const OrderRouter = require('./routers/orderRouter');
+// const CategoryRouter = require('./routers/categoryRouter');
+// const ProductRouter = require('./routers/productRouter');
+// const OrderRouter = require('./routers/orderRouter');
 // import { connect } from 'mongoose';
 // import morgan from 'morgan';
 
@@ -42,29 +47,29 @@ app.use(express.urlencoded({ extended: false }));
 // 라우터 설정할 코드모음 
 // app.use('/auth');
 
-app.use((error, req, res, next) => {
-  if(error) {
-    console.log(error);
-    res.status(500).json({ message: 'Something Wrong!'});
-  }
-});
+// app.use((error, req, res, next) => {
+//   if(error) {
+//     console.log(error);
+//     res.status(500).json({ message: 'Something Wrong!'});
+//   }
+// });
 
 
 
 
-db(); //db 연결시 주석 해제
+// db(); //db 연결시 주석 해제
 
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 
 app.use('/auth', userRouter);
-app.use('/categories', CategoryRouter);
-app.use('/product', ProductRouter);
-app.use('/orders', OrderRouter);
+app.use('/categories', categoryRouter);
+app.use('/product', productRouter);
+app.use('/orders', orderRouter);
 
 // mongoDB를 연결할할때 서버에서 불러와야할 config설정의 host 포트번호
 // connectDB().then(() => {
 //   console.log('mongoDB is connected');
 //   app.listen(config.host.port);
 // });
-export { app };
+export default app  ;

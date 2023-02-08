@@ -1,10 +1,18 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+import { Schema } from 'mongoose';
+
 
 const categorySchema = new Schema({
-  //_id:Schema.Types.ObjectId,
-  categoryname:String,
+    //_id:Schema.Types.ObjectId,
+    // categoryname: String,
+    name: {
+        type: String,
+        required: true,
+    },
+  },
+  {
+    collection: "Category",
+  }
+);
 
-});
-
-module.exports = mongoose.model('Category', categorySchema);
+// import문에서는 export default
+export default categorySchema;
