@@ -1,6 +1,8 @@
-const { Schema, model } = require('mongoose');
+import express from 'express';
+import mongoose, { Schema, model } from 'mongoose';
 
-const UserSchema = new Schema({
+// 유저의 스키마를 선언?
+const userSchema = new Schema({
     email: {
         type: String,
         required: true,
@@ -29,8 +31,12 @@ const UserSchema = new Schema({
     },
 });
 
+// module export할때 보내줘야했던것을 변수로 선언
+// const User = mongoose.model('User', userSchema);
+const User = express.Router();
+
 // Create new user document
-UserSchema.statics.create = function (payload) {
+userSchema.statics.create = function (payload) {
     // this === Model
     const user = new this(payload);
     // return Promise
@@ -38,26 +44,27 @@ UserSchema.statics.create = function (payload) {
 };
 
 // Find All
-UserSchema.statics.findAll = function () {
+userSchema.statics.findAll = function () {
     // return promise
     return this.find({});
 };
 
 // Find One by id
-UserSchema.statics.findOneByid = function (id) {
+userSchema.statics.findOneByid = function (id) {
     return this.findOne({ id });
 };
 
 // Update by id
-UserSchema.statics.updateByid = function (id, payload) {
+userSchema.statics.updateByid = function (id, payload) {
     return this.findOneAndUpdate({ id }, payload, { new: true });
 };
 
 // Delete by id
-UserSchema.statics.deleteByid = function (id) {
+userSchema.statics.deleteByid = function (id) {
     return this.remove({ id });
 };
 
 // Create Model & Export
+export default User ;
 
-module.exports = model('User', UserSchema);
+

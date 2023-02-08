@@ -1,11 +1,18 @@
-require('dotenv').config();
-require('express-async-errors');
-require('./database/database.js');
-const express = require('express');
-const cors = require('cors');
-const helmet = require('helmet');
-const cookieParser = require('cookie-parser');
+// import'./db/schemas/database';
+import "dotenv/config";
+import 'express-async-errors';
+import './db.js'
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import cookieParser from 'cookie-parser';
 
+// 라우터 설정 
+import userRouter from './routers/userRouter.js'
+// import 
+const CategoryRouter = require('./routers/categoryRouter');
+const ProductRouter = require('./routers/productRouter');
+const OrderRouter = require('./routers/orderRouter');
 // import { connect } from 'mongoose';
 // import morgan from 'morgan';
 
@@ -43,29 +50,21 @@ app.use((error, req, res, next) => {
 });
 
 
-const UserRouter = require('./routers/userRouter');
-const CategoryRouter = require('./routers/categoryRouter');
-const ProductRouter = require('./routers/productRouter');
-const OrderRouter = require('./routers/orderRouter');
+
 
 db(); //db 연결시 주석 해제
 
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 
-app.use('/auth', UserRouter);
+app.use('/auth', userRouter);
 app.use('/categories', CategoryRouter);
 app.use('/product', ProductRouter);
-// app.use('/orders', OrderRouter);
+app.use('/orders', OrderRouter);
 
 // mongoDB를 연결할할때 서버에서 불러와야할 config설정의 host 포트번호
 // connectDB().then(() => {
 //   console.log('mongoDB is connected');
 //   app.listen(config.host.port);
 // });
-
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log("서버가 정상적으로 실행되었습니다.", `PORT : ${PORT}`);
-});
+export { app };
