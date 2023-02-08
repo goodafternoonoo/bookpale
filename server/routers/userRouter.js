@@ -1,19 +1,11 @@
-<<<<<<< HEAD
 const jwt = require('jsonwebtoken');
 const SECRET_KEY = 'blahblah';
 
 const { Router } = require('express');
 const router = Router();
-=======
-import express from 'express';
-import User from '../db/schemas/User.js';
->>>>>>> a6929b9a8380553fcb073c23dc61e0ec99b511f7
 
-// import 구문에서 Route가 무엇을 정의하는지 모름
-// express에서 route를 땡겨오기 위해 사용
-const userRouter = express.Router();
+const User = require('../db/schemas/User.js');
 
-<<<<<<< HEAD
 const { auth } = require('../middleware/authMiddleware.js');
 
 router.get('/', auth, (req, res, next) => {
@@ -31,10 +23,6 @@ router.get('/:id', (req, res, next) => {
 });
 
 router.post('/signup', async (req, res, next) => {
-=======
-
-userRouter.post('/signup', async (req, res, next) => {
->>>>>>> a6929b9a8380553fcb073c23dc61e0ec99b511f7
     // res.send('회원가입 ');
     const { email, password, name, address1, address2, zipCode } = req.body;
     const user = {
@@ -53,7 +41,6 @@ userRouter.post('/signup', async (req, res, next) => {
         .catch((err) => res.status(500).send(err));
 });
 
-<<<<<<< HEAD
 router.post('/login', async (req, res, next) => {
     const { email, password } = req.body;
 
@@ -80,11 +67,6 @@ router.post('/login', async (req, res, next) => {
             });
         })
         .catch((err) => res.status(500).send(err));
-=======
-userRouter.post('/login', async (req, res, next) => {
-    res.send('로그인  ');
->>>>>>> a6929b9a8380553fcb073c23dc61e0ec99b511f7
 });
 
-// module.exports = router;
-export default userRouter;
+module.exports = router;
