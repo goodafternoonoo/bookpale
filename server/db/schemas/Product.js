@@ -1,4 +1,5 @@
-const { Schema } = require('mongoose');
+// import mongoose from 'mongoose';
+import { Schema } from 'mongoose';
 
 const ProductSchema = new Schema({
     title: {
@@ -31,4 +32,4 @@ const ProductSchema = new Schema({
     }
 })
 
-module.exports = ProductSchema;
+export default ProductSchema;
