@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import DaumPostCode from 'react-daum-postcode';
 
@@ -8,38 +8,100 @@ import Modal from '../components/Modal.js';
 
 export default function Order() {
     const location = useLocation();
+    const navigate = useNavigate();
     const [isSingle, setIsSingle] = useState(false);
-
-    let book;
-
-    if (location.state) {
-        book = location.state.book;
-    }
-
     const [user, setUser] = useState({});
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) ?? []);
+    const [name, setName] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [zipCode, setZipcode] = useState('');
-    const [address, setAddress] = useState('');
+    const [address1, setAddress1] = useState('');
+    const [address2, setAddress2] = useState('');
+    const [totalPrice, setTotalPrice] = useState('');
 
-    useEffect(() => {
-        if (book) setIsSingle(true);
-    }, []);
+    const book = location.state?.book;
 
     //추후 토큰으로 로그인 된 계정의 id값을 이용하여 회원 정보를 조회 현재는 임시 데이터 바인딩
     useEffect(() => {
+        console.log(book);
+
+        if (book) setIsSingle(true);
+
         axios.get('http://localhost:3001/users/1').then((response) => {
             setUser(response.data);
-            setZipcode(response.data.address.zipCode);
-            setAddress(response.data.address.address1);
+            setName(response.data.name);
+            setZipcode(response.data.address?.zipCode);
+            setAddress1(response.data.address?.address1);
+            setAddress2(response.data.address?.address2);
+
+            setTotalPrice(
+                cart.reduce((a, b) => {
+                    return a + Number(b.price * b.amount);
+                }, 0)
+            );
         });
     }, []);
 
     const handle = {
+        getDate: () => {
+            let today = new Date();
+
+            let year = today.getFullYear(); // 년도
+            let month = String(today.getMonth() + 1).padStart(2, '0'); // 월
+            let date = String(today.getDate()).padStart(2, '0'); // 날짜
+            let day = today.getDay(); // 요일
+
+            return `${year}-${month}-${date}`;
+        },
         selectAddress: (data) => {
             setZipcode(data.zonecode);
-            setAddress(data.address);
+            setAddress1(data.address);
 
             document.querySelector('.btn-close').click();
+        },
+        clickBuy: () => {
+            let json = {};
+
+            if (isSingle) {
+                json = {
+                    products: [{ title: book.title, amount: '1' }],
+                    totalprice: book.price,
+                    address: {
+                        zipCode,
+                        address1,
+                        address2,
+                    },
+                    receiverName: name,
+                    phoneNumber,
+                    status: '배송준비중',
+                    orderDate: handle.getDate(),
+                    orderUser: user.email,
+                };
+            } else {
+                json = {
+                    products: [],
+                    totalPrice,
+                    address: {
+                        zipCode,
+                        address1,
+                        address2,
+                    },
+                    receiverName: name,
+                    phoneNumber,
+                    status: '배송준비중',
+                    orderDate: handle.getDate(),
+                    orderUser: user.email,
+                };
+
+                cart.map((item, i) => {
+                    json.products.push({ title: item.title, amount: item.amount });
+                });
+
+                localStorage.clear();
+            }
+
+            axios.post('http://localhost:3001/orderItem', json);
+            navigate('/complete');
         },
     };
 
@@ -55,12 +117,12 @@ export default function Order() {
                             <form className='validation-form'>
                                 <div className='mb-3'>
                                     <label htmlFor='name'>이름</label>
-                                    <input type='text' className='form-control' id='name' placeholder='홍길동' defaultValue={user.name} required />
+                                    <input type='text' className='form-control' id='name' placeholder='홍길동' value={name} onChange={(e) => setName(e.target.value)} required />
                                     <div className='invalid-feedback'>이름을 입력해주세요.</div>
                                 </div>
                                 <div className='mb-3'>
-                                    <label htmlFor='email'>연락처</label>
-                                    <input type='email' className='form-control' id='email' placeholder='010-1234-5678' required />
+                                    <label htmlFor='phoneNumber'>연락처</label>
+                                    <input type='phoneNumber' className='form-control' id='phoneNumber' placeholder='010-1234-5678' value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
                                     <div className='invalid-feedback'>연락처를 입력해주세요.</div>
                                 </div>
                                 <div className='row'>
@@ -68,7 +130,7 @@ export default function Order() {
                                         <label htmlFor='address2'>
                                             우편번호<span className='text-muted'></span>
                                         </label>
-                                        <input type='text' className='form-control' id='address2' placeholder='우편번호를 입력해주세요.' defaultValue={zipCode} />
+                                        <input type='text' className='form-control' id='zipCode' placeholder='우편번호를 입력해주세요.' value={zipCode} onChange={(e) => setZipcode(e.target.value)} />
                                     </div>
                                     <div className='mb-3 col-md-6'>
                                         <label htmlFor='address2'>
@@ -81,15 +143,15 @@ export default function Order() {
                                 </div>
                                 <div className='row'>
                                     <div className='mb-3 col-md-7'>
-                                        <label htmlFor='address'>주소</label>
-                                        <input type='text' className='form-control' id='address' placeholder='서울특별시 강남구' defaultValue={address} required />
+                                        <label htmlFor='address1'>주소</label>
+                                        <input type='text' className='form-control' id='address1' placeholder='서울특별시 강남구' value={address1} onChange={(e) => setAddress1(e.target.value)} required />
                                         <div className='invalid-feedback'>주소를 입력해주세요.</div>
                                     </div>
                                     <div className='mb-3 col-md-5'>
                                         <label htmlFor='address2'>
                                             상세주소<span className='text-muted'></span>
                                         </label>
-                                        <input type='text' className='form-control' id='address2' placeholder='상세주소를 입력해주세요.' defaultValue={user.address?.address2} />
+                                        <input type='text' className='form-control' id='address2' placeholder='상세주소를 입력해주세요.' value={address2} onChange={(e) => setAddress2(e.target.value)} />
                                     </div>
                                 </div>
                                 <div className='mb-4'></div>
@@ -106,9 +168,9 @@ export default function Order() {
                                         {isSingle ? (
                                             <span>{book.title} / 1개</span>
                                         ) : (
-                                            cart.map((cart) => {
+                                            cart.map((cart, i) => {
                                                 return (
-                                                    <span key={cart.bookId}>
+                                                    <span key={i}>
                                                         {cart.title} / {cart.amount}개
                                                     </span>
                                                 );
@@ -137,11 +199,9 @@ export default function Order() {
                             </div>
                             <div className='mb-4'></div>
                             <div className='text-center'>
-                                <Link to='/complete'>
-                                    <Button className='w-75' size='lg'>
-                                        결제하기
-                                    </Button>
-                                </Link>
+                                <Button onClick={handle.clickBuy} className='w-75' size='lg'>
+                                    결제하기
+                                </Button>
                             </div>
                         </div>
                     </div>

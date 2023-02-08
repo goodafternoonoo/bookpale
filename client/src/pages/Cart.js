@@ -29,6 +29,7 @@ export default function Cart() {
         });
 
         setCart([...copy]);
+        localStorage.setItem('cart', JSON.stringify(cart));
     }
 
     function handleClickDeleteAll() {

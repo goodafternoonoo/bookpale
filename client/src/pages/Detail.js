@@ -17,7 +17,8 @@ export default function Detail() {
     }, [id]);
 
     function handleClickCart(e) {
-        const cart = JSON?.parse(localStorage.getItem('cart'));
+        const cartOrg = localStorage.getItem('cart');
+        const cart = cartOrg ? JSON?.parse(cartOrg) : [];
         const isCart = cart?.find((item) => id === item.id);
 
         if (isCart) return alert('이미 장바구니에 존재하는 상품입니다.');

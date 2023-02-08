@@ -1,11 +1,24 @@
-// import { useRef } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import Styles from '../css/History.module.css';
 
 export default function History() {
-    function handleClick() {
+    const [orderList, setOrderList] = useState([]);
+    useEffect(() => {
+        axios.get('http://localhost:3001/orderItem').then((response) => setOrderList(response.data));
+    }, []);
+
+    function handleClick(id) {
         if (window.confirm('취소하시겠습니까?')) {
-            alert('취소되었습니다.');
+            axios.delete(`http://localhost:3001/orderItem/${id}`).then((response) => {
+                alert('취소되었습니다.');
+
+                const copy = orderList.filter((item) => item.id !== id);
+
+                setOrderList([...copy]);
+            });
         }
     }
 
@@ -22,36 +35,29 @@ export default function History() {
                             <Col>상태</Col>
                             <Col>신청</Col>
                         </Row>
-                        <Row className={Styles.tr}>
-                            <Col>2023-02-01</Col>
-                            <Col xs={5}>여성 청바지 / 1개</Col>
-                            <Col>배송중</Col>
-                            <Col>
-                                <Button variant='danger' size={'sm'} onClick={handleClick}>
-                                    주문 취소
-                                </Button>
-                            </Col>
-                        </Row>
-                        <Row className={Styles.tr}>
-                            <Col>2023-02-01</Col>
-                            <Col xs={5}>가죽 자켓 / 1개</Col>
-                            <Col>배송 완료</Col>
-                            <Col>
-                                <Button variant='danger' size={'sm'} onClick={handleClick}>
-                                    주문 취소
-                                </Button>
-                            </Col>
-                        </Row>
-                        <Row className={Styles.tr}>
-                            <Col>2023-02-01</Col>
-                            <Col xs={5}>고라니 / 1개</Col>
-                            <Col>상품 준비중</Col>
-                            <Col>
-                                <Button variant='danger' size={'sm'} onClick={handleClick}>
-                                    주문 취소
-                                </Button>
-                            </Col>
-                        </Row>
+                        {orderList &&
+                            orderList.map((item, i) => {
+                                return (
+                                    <Row key={i} className={Styles.tr}>
+                                        <Col>{item.orderDate}</Col>
+                                        <Col className='flex-column' xs={5}>
+                                            {item.products.map((product) => {
+                                                return (
+                                                    <span>
+                                                        {product.title} / {product.amount}개
+                                                    </span>
+                                                );
+                                            })}
+                                        </Col>
+                                        <Col>{item.status}</Col>
+                                        <Col>
+                                            <Button variant='danger' size={'sm'} onClick={() => handleClick(item.id)}>
+                                                주문 취소
+                                            </Button>
+                                        </Col>
+                                    </Row>
+                                );
+                            })}
                     </Container>
                 </div>
             </div>
