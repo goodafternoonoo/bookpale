@@ -3,6 +3,14 @@ const router = Router();
 
 const User = require('../db/schemas/User.js');
 
+router.get('/', (req, res) => {
+    User.findAll();
+});
+
+router.get('/:id', (req, res) => {
+    User.findOneByid(req.params.id).then((result) => res.send(result));
+});
+
 router.post('/signup', async (req, res, next) => {
     // res.send('회원가입 ');
     const { email, password, name, address1, address2, zipCode } = req.body;
@@ -23,7 +31,15 @@ router.post('/signup', async (req, res, next) => {
 });
 
 router.post('/login', async (req, res, next) => {
-    res.send('로그인  ');
+    const { email, password } = req.body;
+
+    User.findOneByEmailAndPassword(email, password)
+        .then((user) => {
+            user && res.status(200).send(user);
+
+            res.status(401).send();
+        })
+        .catch((err) => res.status(500).send(err));
 });
 
 module.exports = router;

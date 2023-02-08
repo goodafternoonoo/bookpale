@@ -23,11 +23,9 @@ export default function Order() {
 
     //추후 토큰으로 로그인 된 계정의 id값을 이용하여 회원 정보를 조회 현재는 임시 데이터 바인딩
     useEffect(() => {
-        console.log(book);
-
         if (book) setIsSingle(true);
 
-        axios.get('http://localhost:3001/users/1').then((response) => {
+        axios.get('http://localhost:3000/auth/1').then((response) => {
             setUser(response.data);
             setName(response.data.name);
             setZipcode(response.data.address?.zipCode);

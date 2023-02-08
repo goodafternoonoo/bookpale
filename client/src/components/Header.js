@@ -6,6 +6,7 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import { AppContext } from '../App';
 
 export default function Header() {
+    const isLogin = localStorage.getItem('user');
     const navigate = useNavigate();
 
     const { categories, setCategories } = useContext(AppContext);
@@ -36,12 +37,21 @@ export default function Header() {
                         })}
                     </Nav>
                     <Nav className='justify-content-end'>
-                        {/* 링크 태그를 감싸는  */}
                         <Nav.Link onClick={() => navigate('/adminMenu')}>관리자 메뉴</Nav.Link>
                         <Nav.Link onClick={() => navigate('/menu')}>메뉴</Nav.Link>
                         <Nav.Link onClick={() => navigate('/cart')}>장바구니</Nav.Link>
-                        <Nav.Link onClick={() => navigate('/signin')}>로그인</Nav.Link>
-                        <Nav.Link onClick={() => navigate('/signup')}>회원가입</Nav.Link>
+                        {isLogin ? (
+                            <Nav.Link
+                                onClick={() => {
+                                    localStorage.removeItem('user');
+                                    navigate('/');
+                                }}
+                            >
+                                로그아웃
+                            </Nav.Link>
+                        ) : (
+                            <Nav.Link onClick={() => navigate('/signin')}>로그인</Nav.Link>
+                        )}
                     </Nav>
                 </Container>
             </Navbar>

@@ -48,6 +48,11 @@ UserSchema.statics.findOneByid = function (id) {
     return this.findOne({ id });
 };
 
+// Find One by email and password
+UserSchema.statics.findOneByEmailAndPassword = function (email, password) {
+    return this.findOne({ email, password });
+};
+
 // Update by id
 UserSchema.statics.updateByid = function (id, payload) {
     return this.findOneAndUpdate({ id }, payload, { new: true });
