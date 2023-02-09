@@ -24,13 +24,14 @@ export const AppContext = createContext();
 
 export default function App() {
     const [categories, setCategories] = useState([]);
+    const [books, setBooks] = useState([]);
 
     return (
         // 1. 컨텍스트를 전역에서 사용하기 위해 Provider로 전체 구조를 감쌈
         // 2. 상태관리하고 싶은 변수나 객체를 value에 담음
         // 3. 해당 value들을 사용하고자 하는 component 또는 page에서 useContext를 통해 사용할 수 있음
         // ***주의할 점은 state의 값이 바뀌었을 때, 해당 state를 사용하는 모든 곳에서 리렌더링이 일어나기 때문에 주의를 요함
-        <AppContext.Provider value={{ categories, setCategories }}>
+        <AppContext.Provider value={{ categories, setCategories, books, setBooks }}>
             <div className='vh-100'>
                 <Main>
                     <Routes>

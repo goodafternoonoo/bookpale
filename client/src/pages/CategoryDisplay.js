@@ -42,7 +42,8 @@ export default function CategoryDisplay({ children }) {
                     );
                 })}
             </Container>
-            <Pagination
+            {/* todo: 페이지네이션 기능 추가 예정 */}
+            {/* <Pagination
                 activePage={page} // 현재 페이지
                 itemsCountPerPage={5} // 한 페이지당 보여줄 아이템 갯수
                 totalItemsCount={books.length} // 총 아이템 갯수
@@ -52,7 +53,7 @@ export default function CategoryDisplay({ children }) {
                 firstPageText={'<<'}
                 lastPageText={'>>'}
                 onChange={changePage} // 페이지 변경 함수
-            />
+            /> */}
         </>
     );
 }
