@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import styles from '../css/Detail.module.css';
-import png from '../js.png';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
@@ -41,13 +40,13 @@ export default function Detail() {
             <hr />
             <div className='d-flex justify-content-between'>
                 <div className='input-form row mb-5 w-50'>
-                    <img src={png} alt='' />
+                    <img variant='top' src={require('../shop.jpg')} />
                 </div>
                 <div className={(styles.bookContent, 'input-form row mb-5 w-50')}>
                     <div className={styles.desc}>
                         <p className={styles.title}>{book.title}</p>
                         <h1>{Number(book.price).toLocaleString()}원</h1>
-                        <p>{book.detailDescription}</p>
+                        <p className='mt-5 lh-lg'>{book.detailDescription}</p>
                     </div>
                     <div className={styles.buttons}>
                         <Button onClick={handleClickCart}>장바구니</Button>
