@@ -32,11 +32,11 @@ const userSchema = new Schema({
 });
 
 // module export할때 보내줘야했던것을 변수로 선언
-// const User = mongoose.model('User', userSchema);
-const User = express.Router();
+const User = mongoose.model('User', userSchema);
+// const User = express.Router();
 
 // Create new user document
-userSchema.statics.create = function (payload) {
+userSchema.create = function (payload) {
     // this === Model
     const user = new this(payload);
     // return Promise
@@ -44,32 +44,30 @@ userSchema.statics.create = function (payload) {
 };
 
 // Find All
-userSchema.statics.findAll = function () {
+userSchema.findAll = function () {
     // return promise
     return this.find({});
 };
 
 // Find One by id
-userSchema.statics.findOneByid = function (id) {
+userSchema.findOneByid = function (id) {
     return this.findOne({ id });
 };
 
 // Find One by email and password
-UserSchema.statics.findOneByEmailAndPassword = function (email, password) {
+userSchema.findOneByEmailAndPassword = function (email, password) {
     return this.findOne({ email, password });
 };
 
 // Update by id
-userSchema.statics.updateByid = function (id, payload) {
+userSchema.updateByid = function (id, payload) {
     return this.findOneAndUpdate({ id }, payload, { new: true });
 };
 
 // Delete by id
-userSchema.statics.deleteByid = function (id) {
+userSchema.deleteByid = function (id) {
     return this.remove({ id });
 };
 
 // Create Model & Export
-export default User ;
-
-
+export default User;

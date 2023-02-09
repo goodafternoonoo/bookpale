@@ -1,6 +1,6 @@
-const jwt = require('jsonwebtoken');
+import * as jwt from 'jsonwebtoken';
 const SECRET_KEY = 'blahblah';
-exports.auth = (req, res, next) => {
+const auth = (req, res, next) => {
     // 인증 완료
     try {
         // 요청 헤더에 저장된 토큰(req.headers.authorization)과 비밀키를 사용하여 토큰을 req.decoded에 반환
@@ -24,3 +24,5 @@ exports.auth = (req, res, next) => {
         }
     }
 };
+
+export default auth;

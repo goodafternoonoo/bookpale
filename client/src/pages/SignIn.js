@@ -17,7 +17,6 @@ export default function SignIn() {
     const [password, setPassword] = useState('');
 
     function handleLogin() {
-        console.log(email, password);
         axios
             .post('http://localhost:3000/auth/login', { email, password })
             .then((response) => {
@@ -33,7 +32,6 @@ export default function SignIn() {
                 alert('아이디 또는 비밀번호가 일치하지 않습니다.');
             });
     }
-
 
     return (
         <>

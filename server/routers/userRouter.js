@@ -1,12 +1,13 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 const SECRET_KEY = 'blahblah';
 
-const { Router } = require('express');
-const router = Router();
+import express from 'express';
+const router = express.Router();
 
-const User = require('../db/schemas/User.js');
+import User from '../db/schemas/User.js';
 
-const { auth } = require('../middleware/authMiddleware.js');
+import auth from '../middleware/authMiddleware.js';
+// const { auth } = require('../middleware/authMiddleware.js');
 
 router.get('/', auth, (req, res, next) => {
     User.findAll().then((result) => {
@@ -23,7 +24,6 @@ router.get('/:id', (req, res, next) => {
 });
 
 router.post('/signup', async (req, res, next) => {
-    // res.send('회원가입 ');
     const { email, password, name, address1, address2, zipCode } = req.body;
     const user = {
         email: email,
@@ -44,11 +44,11 @@ router.post('/signup', async (req, res, next) => {
 router.post('/login', async (req, res, next) => {
     const { email, password } = req.body;
 
-    User.findOneByEmailAndPassword(email, password)
+    User.findOne({ email, password })
         .then((user) => {
             if (!user) return res.status(401).send();
 
-            token = jwt.sign(
+            const token = jwt.sign(
                 {
                     type: 'JWT',
                     email: email,
@@ -69,4 +69,4 @@ router.post('/login', async (req, res, next) => {
         .catch((err) => res.status(500).send(err));
 });
 
-module.exports = router;
+export default router;
