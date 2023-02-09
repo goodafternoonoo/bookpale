@@ -12,7 +12,7 @@ export default function History() {
 
     function handleClick(id, status) {
         if (status === '주문취소') {
-            // return alert('이미 취소된 건입니다.');
+            return alert('이미 취소된 건입니다.');
         }
 
         if (window.confirm('취소하시겠습니까?')) {
