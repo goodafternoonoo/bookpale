@@ -3,6 +3,7 @@ import Product from '../db/schemas/Product.js';
 import upload from './upload.js';
 import path from 'path';
 import fs from 'fs';
+import auth from '../middleware/authMiddleware.js';
 
 const __dirname = path.resolve();
 const productRouter = Router();
@@ -34,7 +35,7 @@ productRouter.get('/:id', async (req, res) => {
 
 //상품 추가 (관리자)
 //POST http://localhost:3000/products
-productRouter.post('/', upload.single('filename'), async (req, res) => {
+productRouter.post('/',auth, upload.single('filename'), async (req, res) => {
     const { title, categoryId, shortDescription, detailDescription, invetory, price } = req.body;
     const filename = req.file.filename;
     try {
@@ -56,7 +57,7 @@ productRouter.post('/', upload.single('filename'), async (req, res) => {
 
 //상품 수정  (관리자)
 //PUT http://localhost:3000/products/:productId
-productRouter.put('/:productId', upload.single('filename'), async (req, res, next) => {
+productRouter.put('/:productId',auth, upload.single('filename'), async (req, res, next) => {
     const { productId } = req.params;
     const { title, categoryId, shortDescription, detailDescription, invetory, price } = req.body;
     const filename = req.file.filename;
@@ -79,7 +80,7 @@ productRouter.put('/:productId', upload.single('filename'), async (req, res, nex
 
 //상품 삭제 (관리자)
 //DELETE http://localhost:3000/products/:productId
-productRouter.delete('/:productId', async (req, res, next) => {
+productRouter.delete('/:productId',auth, async (req, res, next) => {
     const { productId } = req.params;
     try {
         await Product.findByIdAndDelete(productId);
