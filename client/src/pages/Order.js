@@ -25,19 +25,19 @@ export default function Order() {
     useEffect(() => {
         if (book) setIsSingle(true);
 
-        axios.get('http://localhost:3000/auth/1').then((response) => {
-            setUser(response.data);
-            setName(response.data.name);
-            setZipcode(response.data.address?.zipCode);
-            setAddress1(response.data.address?.address1);
-            setAddress2(response.data.address?.address2);
+        const userInfo = JSON.parse(localStorage.user);
 
-            setTotalPrice(
-                cart.reduce((a, b) => {
-                    return a + Number(b.price * b.amount);
-                }, 0)
-            );
-        });
+        setUser(userInfo);
+        setName(userInfo.name);
+        setZipcode(userInfo.address?.zipCode);
+        setAddress1(userInfo.address?.address1);
+        setAddress2(userInfo.address?.address2);
+
+        setTotalPrice(
+            cart.reduce((a, b) => {
+                return a + Number(b.price * b.amount);
+            }, 0)
+        );
     }, []);
 
     const handle = {
@@ -63,14 +63,14 @@ export default function Order() {
             if (isSingle) {
                 json = {
                     products: [{ title: book.title, amount: '1' }],
-                    totalprice: book.price,
+                    totalPrice: book.price,
                     address: {
                         zipCode,
                         address1,
                         address2,
                     },
                     receiverName: name,
-                    phoneNumber,
+                    receiverPhoneNumber: phoneNumber,
                     status: '배송준비중',
                     orderDate: handle.getDate(),
                     orderUser: user.email,
@@ -85,20 +85,20 @@ export default function Order() {
                         address2,
                     },
                     receiverName: name,
-                    phoneNumber,
+                    receiverPhoneNumber: phoneNumber,
                     status: '배송준비중',
                     orderDate: handle.getDate(),
                     orderUser: user.email,
                 };
 
-                cart.map((item, i) => {
+                cart.map((item) => {
                     json.products.push({ title: item.title, amount: item.amount });
                 });
 
-                localStorage.clear();
+                localStorage.removeItem('cart');
             }
 
-            axios.post('http://localhost:3001/orderItem', json);
+            axios.post('http://localhost:3000/orders', json);
             navigate('/complete');
         },
     };

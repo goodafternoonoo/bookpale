@@ -11,7 +11,17 @@ express.Router() 형태를 사용했는데 {}를 사용해서 epxress의 기능�
 const orderRouter = Router();
 
 orderRouter.post('/', auth, async (req, res, next) => {
-    res.send('주문추가(신규주문)');
+    const json = req.body;
+
+    console.log(json);
+
+    try {
+        await Order.create(json);
+        res.status(200).send();
+    } catch (err) {
+        console.error(err);
+        res.send('create 실패');
+    }
 });
 
 //관리자기능 - 주문 전체내역 조회
@@ -48,8 +58,16 @@ orderRouter.put('/:orderId', async (req, res, next) => {
 });
 
 //유저 body: {status: DELETE}
-orderRouter.put('/:orderId/status', async (req, res, next) => {
-    res.send('주문내역취소');
+orderRouter.put('/:orderId/delete', async (req, res, next) => {
+    const { orderId } = req.params;
+
+    try {
+        await Order.findByIdAndUpdate({ _id: orderId }, { status: '주문취소' });
+        res.status(200).send();
+    } catch (err) {
+        console.error(err);
+        res.send('주문 조회가 실패하였습니다.');
+    }
 });
 
 //관리자 기능

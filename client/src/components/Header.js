@@ -44,6 +44,7 @@ export default function Header() {
                             <Nav.Link
                                 onClick={() => {
                                     localStorage.removeItem('jwt');
+                                    localStorage.removeItem('user');
                                     delete axios.defaults.headers.common['Authorization'];
                                     navigate('/');
                                 }}

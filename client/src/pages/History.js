@@ -7,17 +7,19 @@ import Styles from '../css/History.module.css';
 export default function History() {
     const [orderList, setOrderList] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:3001/orderItem').then((response) => setOrderList(response.data));
+        axios.get('http://localhost:3000/orders').then((response) => setOrderList(response.data));
     }, []);
 
-    function handleClick(id) {
+    function handleClick(id, status) {
+        if (status === '주문취소') {
+            // return alert('이미 취소된 건입니다.');
+        }
+
         if (window.confirm('취소하시겠습니까?')) {
-            axios.delete(`http://localhost:3001/orderItem/${id}`).then((response) => {
+            axios.put(`http://localhost:3000/orders/${id}/delete`).then((response) => {
                 alert('취소되었습니다.');
 
-                const copy = orderList.filter((item) => item.id !== id);
-
-                setOrderList([...copy]);
+                window.location.reload();
             });
         }
     }
@@ -41,9 +43,9 @@ export default function History() {
                                     <Row key={i} className={Styles.tr}>
                                         <Col>{item.orderDate}</Col>
                                         <Col className='flex-column' xs={5}>
-                                            {item.products.map((product) => {
+                                            {item.products.map((product, i) => {
                                                 return (
-                                                    <span>
+                                                    <span key={i}>
                                                         {product.title} / {product.amount}개
                                                     </span>
                                                 );
@@ -51,7 +53,7 @@ export default function History() {
                                         </Col>
                                         <Col>{item.status}</Col>
                                         <Col>
-                                            <Button variant='danger' size={'sm'} onClick={() => handleClick(item.id)}>
+                                            <Button variant='danger' size={'sm'} onClick={() => handleClick(item._id, item.status)}>
                                                 주문 취소
                                             </Button>
                                         </Col>

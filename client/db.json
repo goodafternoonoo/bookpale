@@ -1,171 +1,55 @@
 {
-    "orderItem": [
-        {
-            "id": "1",
-            "products": [
-                {
-                    "id": "1",
-                    "title": "강아지",
-                    "amount": "1"
-                },
-                {
-                    "id": "2",
-                    "title": "고라니",
-                    "amount": "3"
-                }
-            ],
-            "totalprice": "10000",
-            "address": {
-                "zipCode": "12345",
-                "address1": "서울시 어쩌구",
-                "address2": "101호"
-            },
-            "receiverName": "수령자",
-            "receiverPhoneNumber": "수령자 전화번호",
-            "status": "배송중",
-            "orderDate": "2023-02-08",
-            "orderUser": "2023-02-08"
-        },
-        {
-            "id": "2",
-            "products": [
-                {
-                    "id": "1",
-                    "title": "고양이",
-                    "amount": "4"
-                }
-            ],
-            "totalprice": "10000",
-            "address": {
-                "zipCode": "12345",
-                "address1": "서울시 어쩌구",
-                "address2": "101호"
-            },
-            "receiverName": "수령자",
-            "receiverPhoneNumber": "수령자 전화번호",
-            "status": "배송중",
-            "orderDate": "2023-02-08",
-            "orderUser": "2023-02-08"
-        },
-        {
-            "products": [
-                {
-                    "title": "리액트 기초",
-                    "amount": "2"
-                },
-                {
-                    "title": "Node.js 기초",
-                    "amount": "1"
-                }
-            ],
-            "totalPrice": 30000,
-            "address": {
-                "zipCode": "45984",
-                "address1": "서울 영등포구 선유로1길 3",
-                "address2": "103동 506호"
-            },
-            "receiverName": "테스트유저",
-            "phoneNumber": "",
-            "status": "배송준비중",
-            "orderDate": "2023-02-08",
-            "orderUser": "test@test.com",
-            "id": "jkleK2P"
-        },
-        {
-            "products": [
-                {
-                    "title": "Node.js 실전",
-                    "amount": "1"
-                },
-                {
-                    "title": "리액트 실전",
-                    "amount": "1"
-                }
-            ],
-            "totalPrice": 20000,
-            "address": {
-                "zipCode": "45984",
-                "address1": "서울 영등포구 선유로1길 3",
-                "address2": "103동 506호"
-            },
-            "receiverName": "테스트유저",
-            "phoneNumber": "",
-            "status": "배송준비중",
-            "orderDate": "2023-02-08",
-            "orderUser": "test@test.com",
-            "id": "lhb0yIJ"
-        },
-        {
-            "products": [
-                {
-                    "title": "Mongoose 도전하기",
-                    "amount": "1"
-                }
-            ],
-            "totalprice": "10000",
-            "address": {
-                "zipCode": "45984",
-                "address1": "서울 영등포구 선유로1길 3",
-                "address2": "103동 506호"
-            },
-            "receiverName": "테스트유저",
-            "phoneNumber": "",
-            "status": "배송준비중",
-            "orderDate": "2023-02-08",
-            "orderUser": "test@test.com",
-            "id": "NICvUnJ"
-        }
-    ],
-    "books": [
-        {
-            "id": "1",
-            "title": "리액트 실전",
-            "categoryId": "IT",
-            "shortDescription": "짧은 설명",
-            "detailDescription": "자세한 설명",
-            "imageKey": "이미지 키",
-            "inventory": "1",
-            "price": "10000"
-        },
-        {
-            "id": "2",
-            "title": "리액트 기초",
-            "categoryId": "IT",
-            "shortDescription": "짧은 설명",
-            "detailDescription": "자세한 설명",
-            "imageKey": "이미지 키",
-            "inventory": "1",
-            "price": "10000"
-        },
-        {
-            "id": "3",
-            "title": "Node.js 기초",
-            "categoryId": "철학",
-            "shortDescription": "짧은 설명",
-            "detailDescription": "자세한 설명",
-            "imageKey": "이미지 키",
-            "inventory": "1",
-            "price": "10000"
-        },
-        {
-            "id": "4",
-            "title": "Node.js 실전",
-            "categoryId": "IT",
-            "shortDescription": "짧은 설명",
-            "detailDescription": "자세한 설명",
-            "imageKey": "이미지 키",
-            "inventory": "1",
-            "price": "10000"
-        },
-        {
-            "id": "5",
-            "title": "Mongoose 도전하기",
-            "categoryId": "IT",
-            "shortDescription": "짧은 설명",
-            "detailDescription": "자세한 설명",
-            "imageKey": "이미지 키",
-            "inventory": "1",
-            "price": "10000"
-        }
-    ]
+  "orderItem": [],
+  "books": [
+    {
+      "id": "1",
+      "title": "리액트 실전",
+      "categoryId": "IT",
+      "shortDescription": "짧은 설명",
+      "detailDescription": "자세한 설명",
+      "imageKey": "이미지 키",
+      "inventory": "1",
+      "price": "10000"
+    },
+    {
+      "id": "2",
+      "title": "리액트 기초",
+      "categoryId": "IT",
+      "shortDescription": "짧은 설명",
+      "detailDescription": "자세한 설명",
+      "imageKey": "이미지 키",
+      "inventory": "1",
+      "price": "10000"
+    },
+    {
+      "id": "3",
+      "title": "Node.js 기초",
+      "categoryId": "철학",
+      "shortDescription": "짧은 설명",
+      "detailDescription": "자세한 설명",
+      "imageKey": "이미지 키",
+      "inventory": "1",
+      "price": "10000"
+    },
+    {
+      "id": "4",
+      "title": "Node.js 실전",
+      "categoryId": "IT",
+      "shortDescription": "짧은 설명",
+      "detailDescription": "자세한 설명",
+      "imageKey": "이미지 키",
+      "inventory": "1",
+      "price": "10000"
+    },
+    {
+      "id": "5",
+      "title": "Mongoose 도전하기",
+      "categoryId": "IT",
+      "shortDescription": "짧은 설명",
+      "detailDescription": "자세한 설명",
+      "imageKey": "이미지 키",
+      "inventory": "1",
+      "price": "10000"
+    }
+  ]
 }

@@ -20,7 +20,7 @@ router.get('/', auth, (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-    User.findOneByid(req.params.id).then((result) => res.send(result));
+    User.findOne(req.params.id).then((result) => res.send(result));
 });
 
 router.post('/signup', async (req, res, next) => {
@@ -55,7 +55,7 @@ router.post('/login', async (req, res, next) => {
                 },
                 SECRET_KEY,
                 {
-                    expiresIn: '15m', // 만료시간 15분
+                    expiresIn: '12h', // 만료시간 12시간
                     issuer: 'blahblah',
                 }
             );
@@ -64,6 +64,7 @@ router.post('/login', async (req, res, next) => {
                 code: 200,
                 message: '토큰이 발급되었습니다.',
                 token: token,
+                user: JSON.stringify(user),
             });
         })
         .catch((err) => res.status(500).send(err));

@@ -23,6 +23,8 @@ export default function SignIn() {
                 alert('로그인되었습니다.');
                 const token = response.data.token;
                 localStorage.setItem('jwt', token);
+                localStorage.setItem('user', response.data.user);
+
                 setAuthorizationToken(token);
 
                 navigate('/');
