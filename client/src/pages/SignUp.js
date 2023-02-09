@@ -59,7 +59,7 @@ export default function SignUp() {
             let data = serialize(new FormData(frm));
 
             axios
-                .post('http://localhost:3000/auth/signup', data)
+                .post('/auth/signup', data)
                 .then((response) => {
                     alert('회원가입이 완료되었습니다.');
                     navigate('/signin');

@@ -18,7 +18,7 @@ export default function CategoryDisplay({ children }) {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:3000/products/list').then((response) => {
+        axios.get('/products/list').then((response) => {
             setBooks(response.data);
         });
     }, []);

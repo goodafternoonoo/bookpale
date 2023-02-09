@@ -18,7 +18,7 @@ export default function SignIn() {
 
     function handleLogin() {
         axios
-            .post('http://localhost:3000/auth/login', { email, password })
+            .post('/auth/login', { email, password })
             .then((response) => {
                 alert('로그인되었습니다.');
                 const token = response.data.token;

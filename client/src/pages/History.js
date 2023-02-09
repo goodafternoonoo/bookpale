@@ -7,7 +7,7 @@ import Styles from '../css/History.module.css';
 export default function History() {
     const [orderList, setOrderList] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:3000/orders').then((response) => setOrderList(response.data));
+        axios.get('/orders').then((response) => setOrderList(response.data));
     }, []);
 
     function handleClick(id, status) {
@@ -16,7 +16,7 @@ export default function History() {
         }
 
         if (window.confirm('취소하시겠습니까?')) {
-            axios.put(`http://localhost:3000/orders/${id}/delete`).then((response) => {
+            axios.put(`/orders/${id}/delete`).then((response) => {
                 alert('취소되었습니다.');
 
                 window.location.reload();

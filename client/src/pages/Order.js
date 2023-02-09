@@ -98,7 +98,7 @@ export default function Order() {
                 localStorage.removeItem('cart');
             }
 
-            axios.post('http://localhost:3000/orders', json);
+            axios.post('/orders', json);
             navigate('/complete');
         },
     };

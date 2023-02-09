@@ -12,7 +12,7 @@ export default function Header() {
     const { categories, setCategories } = useContext(AppContext);
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/categories`).then((response) => {
+        axios.get(`/categories`).then((response) => {
             setCategories(response.data);
         });
     }, []);

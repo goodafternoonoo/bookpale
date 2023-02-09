@@ -16,12 +16,12 @@ export default function Category() {
         e.preventDefault();
         if (!categoryNameInput) return alert('카테고리 이름을 입력해주세요.');
 
-        await axios.post(`http://localhost:3000/categories`, { name: categoryNameInput }).then(() => {
+        await axios.post(`/categories`, { name: categoryNameInput }).then(() => {
             alert('카테고리가 추가되었습니다.');
             document.querySelector('#frm').reset();
         });
 
-        await axios.get(`http://localhost:3000/categories`, { categoryNameInput }).then((response) => {
+        await axios.get(`/categories`, { categoryNameInput }).then((response) => {
             setCategories(response.data);
         });
     }
@@ -29,7 +29,7 @@ export default function Category() {
     function handleClickUpdate(id, event) {
         event.preventDefault();
         if (window.confirm('카테고리를 수정하시겠습니까?')) {
-            axios.put(`http://localhost:3000/categories/${id}`, { name: changeName }).then(() => {
+            axios.put(`/categories/${id}`, { name: changeName }).then(() => {
                 alert('카테고리가 수정되었습니다.');
                 let copy = [...categories];
                 copy.map((item) => {
@@ -46,7 +46,7 @@ export default function Category() {
 
     function handleClickDelete(id) {
         if (window.confirm('카테고리를 삭제하시겠습니까?')) {
-            axios.delete(`http://localhost:3000/categories/${id}`).then(() => {
+            axios.delete(`/categories/${id}`).then(() => {
                 alert('카테고리가 삭제되었습니다.');
                 setCategories(categories.filter((item) => item._id != id));
             });
@@ -54,7 +54,7 @@ export default function Category() {
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/categories`, { categoryNameInput }).then((response) => {
+        axios.get(`/categories`, { categoryNameInput }).then((response) => {
             setCategories(response.data);
         });
     }, []);

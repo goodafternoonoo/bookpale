@@ -11,7 +11,7 @@ export default function Detail() {
     const [book, setBook] = useState({});
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/products/${id}`).then((response) => {
+        axios.get(`/products/${id}`).then((response) => {
             setBook(response.data);
         });
     }, [id]);

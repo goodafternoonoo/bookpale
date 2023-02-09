@@ -10,7 +10,7 @@ export default function BookForm() {
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/products/list').then((response) => {
+        axios.get('/products/list').then((response) => {
             setBooks(response.data);
         });
     }, []);
