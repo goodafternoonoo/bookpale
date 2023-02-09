@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import logo from '../img/bookpale.png'
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { Container, Nav, Navbar } from 'react-bootstrap';
@@ -23,7 +24,7 @@ export default function Header() {
                 {' '}
                 <Container>
                     <Link to='/'>
-                        <Navbar.Brand>로고입니다</Navbar.Brand>
+                        <Navbar.Brand><img src={logo} alt='logo' style={{height: '70px'}} /></Navbar.Brand>
                     </Link>
                     <Nav className='me-auto'>
                         {/* 각 카테고리별 페이지 링크도 navagite로 바꿔줄것  */}
