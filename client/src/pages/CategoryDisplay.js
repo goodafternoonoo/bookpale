@@ -25,13 +25,13 @@ export default function CategoryDisplay({ children }) {
 
     return (
         <>
-            <Container className='d-flex my-5 py-5'>
+            <Container className='d-flex my-5 flex-wrap justify-content-between'>
                 {books.map((book, i) => {
                     return (
                         book.categoryName === categoryName && (
-                            <Card key={i} style={{ width: '20%', margin: '0 10px' }}>
+                            <Card key={book._id} style={{ width: '22%', margin: '20px 10px' }}>
                                 <Link to={`/detail/${book.id}`}>
-                                    <Card.Img variant='top' src={png} />
+                                    <Card.Img variant='top' src={require(`../../../server/uploads/${book.imageKey}`)} />
                                 </Link>
                                 <Card.Body>
                                     <Card.Title>{book.title}</Card.Title>
