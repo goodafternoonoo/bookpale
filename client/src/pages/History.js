@@ -7,7 +7,7 @@ import Styles from '../css/History.module.css';
 export default function History() {
     const [orderList, setOrderList] = useState([]);
     useEffect(() => {
-        axios.get('/orders').then((response) => setOrderList(response.data));
+        axios.get(`/orders/${localStorage.user}`).then((response) => setOrderList(response.data));
     }, []);
 
     function handleClick(id, status) {

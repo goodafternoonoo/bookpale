@@ -39,9 +39,11 @@ orderRouter.get('/', auth, async (req, res, next) => {
 //관리자면 선택한 id와 동일한 id주문 확인.
 //회원이면 회원 id와 동일한 id내역 확인.(조건 넣어야함)
 orderRouter.get('/:orderId', auth, async (req, res, next) => {
+    const orderUser = JSON.parse(req.params.orderId).email;
     try {
-        const orders = await Order.find({});
-        res.send(orders, `주문 상세내역(특정${orderId}유저) 확인`);
+        const orders = await Order.find({ orderUser });
+        console.log(orderUser, orders);
+        res.send(orders);
     } catch (err) {
         console.error(err);
         res.send('조회할 주문이 없습니다.');
