@@ -10,7 +10,7 @@ export default function BookForm() {
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3001/books').then((response) => {
+        axios.get('http://localhost:3000/products/list').then((response) => {
             setBooks(response.data);
         });
     }, []);
@@ -20,8 +20,8 @@ export default function BookForm() {
             <Container className='d-flex my-5 py-5'>
                 {books.map((book) => {
                     return (
-                        <Card key={book.id} style={{ width: '20%', margin: '0 10px' }}>
-                            <Link to={`/detail/${book.id}`}>
+                        <Card key={book._id} style={{ width: '20%', margin: '0 10px' }}>
+                            <Link to={`/detail/${book._id}`}>
                                 <Card.Img variant='top' src={png} />
                             </Link>
                             <Card.Body>
