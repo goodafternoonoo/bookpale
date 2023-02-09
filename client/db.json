@@ -167,15 +167,5 @@
             "inventory": "1",
             "price": "10000"
         }
-    ],
-    "category": [
-        {
-            "categoryName": "철학",
-            "id": 1
-        },
-        {
-            "categoryName": "IT",
-            "id": 2
-        }
     ]
 }

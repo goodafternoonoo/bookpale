@@ -12,7 +12,7 @@ export default function Header() {
     const { categories, setCategories } = useContext(AppContext);
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/category`).then((response) => {
+        axios.get(`http://localhost:3000/categories`).then((response) => {
             setCategories(response.data);
         });
     }, []);
@@ -30,8 +30,8 @@ export default function Header() {
                         {categories.map((category) => {
                             // 추후 id값을 이용한 동적 url 추가
                             return (
-                                <Nav.Link key={category.id} onClick={() => navigate(`/categoryDisplay/${category.categoryName}`)}>
-                                    {category.categoryName}
+                                <Nav.Link key={category._id} onClick={() => navigate(`/categoryDisplay/${category.name}`)}>
+                                    {category.name}
                                 </Nav.Link>
                             );
                         })}

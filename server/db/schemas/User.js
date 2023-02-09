@@ -2,34 +2,39 @@ import express from 'express';
 import mongoose, { Schema, model } from 'mongoose';
 
 // 유저의 스키마를 선언?
-const userSchema = new Schema({
-    email: {
-        type: String,
-        required: true,
-    },
-    password: {
-        type: String,
-        required: true,
-    },
-    address: {
-        zipCode: {
+const userSchema = new Schema(
+    {
+        email: {
             type: String,
             required: true,
         },
-        address1: {
+        password: {
             type: String,
             required: true,
         },
-        address2: {
+        address: {
+            zipCode: {
+                type: String,
+                required: true,
+            },
+            address1: {
+                type: String,
+                required: true,
+            },
+            address2: {
+                type: String,
+                required: true,
+            },
+        },
+        name: {
             type: String,
             required: true,
         },
     },
-    name: {
-        type: String,
-        required: true,
-    },
-});
+    {
+        collection: 'User',
+    }
+);
 
 // module export할때 보내줘야했던것을 변수로 선언
 const User = mongoose.model('User', userSchema);

@@ -16,12 +16,12 @@ export default function Category() {
         e.preventDefault();
         if (!categoryNameInput) return alert('카테고리 이름을 입력해주세요.');
 
-        await axios.post(`http://localhost:3001/category`, { categoryName: categoryNameInput }).then(() => {
+        await axios.post(`http://localhost:3000/categories`, { name: categoryNameInput }).then(() => {
             alert('카테고리가 추가되었습니다.');
             document.querySelector('#frm').reset();
         });
 
-        await axios.get(`http://localhost:3001/category`, { categoryNameInput }).then((response) => {
+        await axios.get(`http://localhost:3000/categories`, { categoryNameInput }).then((response) => {
             setCategories(response.data);
         });
     }
@@ -29,12 +29,12 @@ export default function Category() {
     function handleClickUpdate(id, event) {
         event.preventDefault();
         if (window.confirm('카테고리를 수정하시겠습니까?')) {
-            axios.put(`http://localhost:3001/category/${id}`, { categoryName: changeName }).then(() => {
+            axios.put(`http://localhost:3000/categories/${id}`, { name: changeName }).then(() => {
                 alert('카테고리가 수정되었습니다.');
                 let copy = [...categories];
                 copy.map((item) => {
-                    if (item.id === id) {
-                        item.categoryName = changeName;
+                    if (item._id === id) {
+                        item.name = changeName;
                     }
                 });
                 setCategories([...copy]);
@@ -46,15 +46,15 @@ export default function Category() {
 
     function handleClickDelete(id) {
         if (window.confirm('카테고리를 삭제하시겠습니까?')) {
-            axios.delete(`http://localhost:3001/category/${id}`).then(() => {
+            axios.delete(`http://localhost:3000/categories/${id}`).then(() => {
                 alert('카테고리가 삭제되었습니다.');
-                setCategories(categories.filter((item) => item.id != id));
+                setCategories(categories.filter((item) => item._id != id));
             });
         }
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/category`, { categoryNameInput }).then((response) => {
+        axios.get(`http://localhost:3000/categories`, { categoryNameInput }).then((response) => {
             setCategories(response.data);
         });
     }, []);
@@ -87,18 +87,18 @@ export default function Category() {
                         <div className='input-form col-md-12 mx-auto'>
                             {categories.map((category) => {
                                 return (
-                                    <Row key={category.id} className={Styles.tr}>
-                                        <Col>{category.categoryName}</Col>
+                                    <Row key={category._id} className={Styles.tr}>
+                                        <Col>{category.name}</Col>
                                         <Col>
                                             <Modal title='수정' className='btn-sm mx-1'>
-                                                <Form onSubmit={(e) => handleClickUpdate(category.id, e)}>
+                                                <Form onSubmit={(e) => handleClickUpdate(category._id, e)}>
                                                     <Form.Control className='w-75 d-inline-block' onChange={(e) => setChangeName(e.target.value)} />
-                                                    <Button style={{ width: '20%', marginLeft: '5%' }} variant='secondary' size={'sm'} onClick={(e) => handleClickUpdate(category.id, e)}>
+                                                    <Button style={{ width: '20%', marginLeft: '5%' }} variant='secondary' size={'sm'} onClick={(e) => handleClickUpdate(category._id, e)}>
                                                         저장
                                                     </Button>
                                                 </Form>
                                             </Modal>
-                                            <Button variant='danger' size={'sm'} onClick={() => handleClickDelete(category.id)}>
+                                            <Button variant='danger' size={'sm'} onClick={() => handleClickDelete(category._id)}>
                                                 삭제
                                             </Button>
                                         </Col>

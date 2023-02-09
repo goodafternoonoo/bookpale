@@ -4,8 +4,8 @@ import Category from '../db/schemas/category.js';
 
 const categoryRouter = express.Router();
 
-//카테고리 조회 
-//GET http://localhost:3000/categories 
+//카테고리 조회
+//GET http://localhost:3000/categories
 categoryRouter.get('/', async (req, res, next) => {
     try {
         const categories = await Category.find({});
@@ -20,12 +20,12 @@ categoryRouter.get('/', async (req, res, next) => {
 });
 
 //카테고리 생성
-//POST http://localhost:3000/categories 
+//POST http://localhost:3000/categories
 categoryRouter.post('/', async (req, res, next) => {
     const { name } = req.body;
     try {
         const categories = await Category.create({
-            name:name,
+            name: name,
         });
         res.redirect('/categories');
     } catch (err) {
@@ -35,7 +35,7 @@ categoryRouter.post('/', async (req, res, next) => {
 });
 
 //카테고리 수정
-//PUT http://localhost:3000/categories/:categoryId 
+//PUT http://localhost:3000/categories/:categoryId
 categoryRouter.put('/:categoryId', async (req, res, next) => {
     const { categoryId } = req.params;
     const { name } = req.body;
@@ -43,7 +43,7 @@ categoryRouter.put('/:categoryId', async (req, res, next) => {
         await Category.findByIdAndUpdate(categoryId, {
             name: name,
         });
-        res.redirect('/categories');
+        res.status(200).send();
     } catch (err) {
         console.error(err);
         res.send('update 실패');
@@ -51,12 +51,12 @@ categoryRouter.put('/:categoryId', async (req, res, next) => {
 });
 
 //카테고리 삭제
-//DELETE http://localhost:3000/categories/:categoryId 
+//DELETE http://localhost:3000/categories/:categoryId
 categoryRouter.delete('/:categoryId', async (req, res, next) => {
     const { categoryId } = req.params;
     try {
         await Category.findByIdAndDelete(categoryId);
-        res.redirect('/categories');
+        res.status(200).send();
     } catch (err) {
         console.error(err);
         res.send('delete 실패');

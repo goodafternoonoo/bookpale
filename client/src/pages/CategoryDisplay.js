@@ -26,23 +26,19 @@ export default function CategoryDisplay({ children }) {
     return (
         <>
             <Container className='d-flex my-5 py-5'>
-                {books.map((book) => {
-                    // console.log(book.categoryId)
-                    // console.log(categoryName)
+                {books.map((book, i) => {
                     return (
-                        <>
-                            {book.categoryId === categoryName && (
-                                <Card key={book.id} style={{ width: '20%', margin: '0 10px' }}>
-                                    <Link to={`/detail/${book.id}`}>
-                                        <Card.Img variant='top' src={png} />
-                                    </Link>
-                                    <Card.Body>
-                                        <Card.Title>{book.title}</Card.Title>
-                                        <Card.Text>{Number(book.price).toLocaleString()}원</Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            )}
-                        </>
+                        book.categoryId === categoryName && (
+                            <Card key={i} style={{ width: '20%', margin: '0 10px' }}>
+                                <Link to={`/detail/${book.id}`}>
+                                    <Card.Img variant='top' src={png} />
+                                </Link>
+                                <Card.Body>
+                                    <Card.Title>{book.title}</Card.Title>
+                                    <Card.Text>{Number(book.price).toLocaleString()}원</Card.Text>
+                                </Card.Body>
+                            </Card>
+                        )
                     );
                 })}
             </Container>
