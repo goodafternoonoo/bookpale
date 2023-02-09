@@ -85,7 +85,7 @@ export default function Cart() {
                                     <div className={styles['cartItems']}>
                                         {/* 체크박스 하나씩 인식할 수 있도록 기능 추가 */}
                                         {/* <input type='checkbox' id='SelectCheckbox' /> */}
-                                        <img id='' src={png} alt=''></img>
+                                        <img src={require(`../../../server/uploads/${item.imageKey}`)} />
                                         <div className={styles['productContent']}>
                                             <h4 className={styles['productName']}>{item.title}</h4>
                                             {/* 도서 수량 최소 1권 이상 99권 이하로 지정될 수 있도록 변경 예정 */}
