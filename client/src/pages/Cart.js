@@ -8,13 +8,19 @@ import { useNavigate } from 'react-router-dom';
 export default function Cart() {
     const navigate = useNavigate();
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) ?? []);
+    const user = localStorage.getItem('user');
 
     useEffect(() => {}, []);
 
     //{/* 결제하기 페이지 넘기기 */}
     function ClickOrder(e) {
         e.preventDefault();
-        navigate('/order');
+        if (user) {
+            navigate('/order');
+        } else {
+            alert('로그인 후 구매 가능합니다.');
+            navigate('/signin');
+        }
     }
 
     function handleChangeAmount(id, e) {
