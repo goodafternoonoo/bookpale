@@ -19,7 +19,7 @@
 ### 팀 멤버
 | 담당 업무 | 이름 |
 | ------ | ------ |
-| Front-end | <span style="background-color: #fff5b1">김정훈</span>, 오서원, 조현우 |
+| Front-end | <span style="color: #fff5b1">김정훈</span>, 오서원, 조현우 |
 | Back-end | 박유경, 이정현, 정성은 |
 
 
