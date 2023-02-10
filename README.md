@@ -5,16 +5,12 @@
 2023년 1월 30일(월) ~ 2023년 2월 10일(금), 2주 간
 
 ### 프로젝트 목적
-운동, 다이어트, 이직, 독서...
-여러분의 새해 목표는 무엇인가요?
-
+운동, 다이어트, 이직, 독서... 여러분의 새해 목표는 무엇인가요?
 '북팔이'는 IT, 문학, 철학 등 다양한 분야의 도서를 구매할 수 있는 서비스 입니다.
 
 ### 기술 스택
- - Front-end : <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">, <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">, <img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
- - Back-end  : <img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white">, <img src="https://img.shields.io/badge/mongoDB-47A248?style=for-the-badge&logo=MongoDB&logoColor=white">
- - Front-end :
- - Back-end  :
+ - Front-end : <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
+ - Back-end  : <img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white"> <img src="https://img.shields.io/badge/mongoDB-47A248?style=for-the-badge&logo=MongoDB&logoColor=white">
 
 ### 팀 멤버
 | 담당 업무 | 이름 |
