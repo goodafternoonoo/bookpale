@@ -8,6 +8,7 @@ export default function Detail() {
     const navigate = useNavigate();
     const { id } = useParams();
     const [book, setBook] = useState({});
+    const user = localStorage.getItem('user');
 
     useEffect(() => {
         axios.get(`/products/${id}`).then((response) => {
@@ -27,11 +28,16 @@ export default function Detail() {
     }
 
     function handleClickBuy(e) {
-        navigate('/order', {
-            state: {
-                book,
-            },
-        });
+        if (user) {
+            navigate('/order', {
+                state: {
+                    book,
+                },
+            });
+        } else {
+            alert('로그인 후 구매 가능합니다.');
+            navigate('/signin');
+        }
     }
 
     return (
