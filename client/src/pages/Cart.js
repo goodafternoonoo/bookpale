@@ -32,7 +32,7 @@ export default function Cart() {
 
     function handleClickDeleteAll() {
         if (window.confirm('장바구니를 비우시겠습니까?')) {
-            localStorage.clear();
+            localStorage.removeItem('cart');
             alert('장바구니를 비웠습니다.');
             setCart([]);
         }
