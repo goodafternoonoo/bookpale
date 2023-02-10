@@ -15,21 +15,19 @@
  - Front-end : <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
  - Back-end  : <img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white"> <img src="https://img.shields.io/badge/mongoDB-47A248?style=for-the-badge&logo=MongoDB&logoColor=white">
 
-<span style="color:#fff5b1">김정훈</span>
 
 ### 팀 멤버
 | 담당 업무 | 이름 |
 | ------ | ------ |
-| Front-end | <span style="color:red">김정훈</span>, 오서원, 조현우 |
+| Front-end | 김정훈(팀장), 오서원, 조현우 |
 | Back-end | 박유경, 이정현, 정성은 |
 
 
 # 서비스 기능
 ### `User(사용자 관련 기능)`
-회원가입
- - 사용자 정보 형식 확인
- - 사용자 정보 DB 저장
-
+> 회원가입
+` - 사용자 정보 형식 확인
+- 사용자 정보 DB 저장`
 #### 로그인
  - DB 존재 여부 확인
  - 비밀번호 일치 확인
