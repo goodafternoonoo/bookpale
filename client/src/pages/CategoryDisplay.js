@@ -30,7 +30,7 @@ export default function CategoryDisplay({ children }) {
                     return (
                         book.categoryName === categoryName && (
                             <Card key={book._id} style={{ width: '22%', margin: '20px 10px' }}>
-                                <Link to={`/detail/${book.id}`}>
+                                <Link to={`/detail/${book._id}`}>
                                     <Card.Img variant='top' src={require(`../../../server/uploads/${book.imageKey}`)} />
                                 </Link>
                                 <Card.Body>

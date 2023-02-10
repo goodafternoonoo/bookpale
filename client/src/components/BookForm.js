@@ -22,7 +22,8 @@ export default function BookForm() {
                     return (
                         <Card key={book._id} style={{ width: '22%', margin: '20px 10px' }}>
                             <Link to={`/detail/${book._id}`}>
-                                <Card.Img variant='top' src={require(`../../../server/uploads/${book.imageKey}`)} />
+                                <Card.Img variant='top' src={require(`../shop.jpg`)} />
+                                {/* <Card.Img variant='top' src={require(`../../../server/uploads/${book.imageKey}`)} /> */}
                             </Link>
                             <Card.Body>
                                 <Card.Title>{book.title}</Card.Title>

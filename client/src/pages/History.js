@@ -5,6 +5,7 @@ import { Button, Container, Row, Col } from 'react-bootstrap';
 import Styles from '../css/History.module.css';
 
 export default function History() {
+    const navigate = useNavigate();
     const [orderList, setOrderList] = useState([]);
     useEffect(() => {
         axios.get(`/orders/${localStorage.user}`).then((response) => setOrderList(response.data));
@@ -19,7 +20,14 @@ export default function History() {
             axios.put(`/orders/${id}/delete`).then((response) => {
                 alert('취소되었습니다.');
 
-                window.location.reload();
+                orderList.map((order) => {
+                    if (order._id === id) {
+                        order.status = '주문취소';
+                        return order;
+                    }
+                });
+
+                setOrderList([...orderList]);
             });
         }
     }

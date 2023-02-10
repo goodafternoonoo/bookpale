@@ -64,8 +64,8 @@ orderRouter.put('/:orderId/delete', async (req, res, next) => {
     const { orderId } = req.params;
 
     try {
-        await Order.findByIdAndUpdate({ _id: orderId }, { status: '주문취소' });
-        res.status(200).send();
+        const user = await Order.findByIdAndUpdate({ _id: orderId }, { status: '주문취소' });
+        res.status(200).send(user);
     } catch (err) {
         console.error(err);
         res.send('주문 조회가 실패하였습니다.');

@@ -18,7 +18,7 @@ export default function Detail() {
     function handleClickCart(e) {
         const cartOrg = localStorage.getItem('cart');
         const cart = cartOrg ? JSON?.parse(cartOrg) : [];
-        const isCart = cart?.find((item) => id === item.id);
+        const isCart = cart?.find((item) => id === item._id);
 
         if (isCart) return alert('이미 장바구니에 존재하는 상품입니다.');
 
@@ -40,7 +40,7 @@ export default function Detail() {
             <hr />
             <div className='d-flex justify-content-between'>
                 <div className='input-form row mb-5 w-50'>
-                    <img variant='top' src={require('../shop.jpg')} />
+                    <img src={require('../shop.jpg')} />
                 </div>
                 <div className={(styles.bookContent, 'input-form row mb-5 w-50')}>
                     <div className={styles.desc}>
